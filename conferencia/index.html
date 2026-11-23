@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Conferência de Unidades | Morar Bem 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0c1626;--ink2:#13223a;--sand:#f6f2ec;--paper:#fffdf9;--gold:#c9a46a;--gold2:#e3c995;--muted:#5d6676;--line:rgba(12,22,38,.12);--ok:#2f8f5b;--sold:#8a8f98;--warn:#c2410c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Manrope,system-ui,sans-serif;background:var(--sand);color:#1b2433;line-height:1.5}
+header{background:var(--ink);color:#f4efe6;padding:28px 16px 22px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 16px}
+h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;letter-spacing:-.03em;font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.05}
+h1 span{color:var(--gold2)}
+header p{color:rgba(244,239,230,.7);margin-top:8px;max-width:760px;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{background:rgba(255,255,255,.07);border:1px solid rgba(244,239,230,.14);border-radius:999px;padding:.4em .9em;font-size:.85rem}
+.chip b{color:var(--gold2)}
+.avisos{background:#fff7ed;border:1px solid #fdba74;border-left:4px solid var(--warn);border-radius:12px;padding:16px 18px;margin:22px 0 0}
+.avisos h2{font-size:1rem;color:var(--warn);margin-bottom:6px}
+.avisos li{margin-left:18px;font-size:.93rem}
+.ok-box{background:#ecfdf3;border:1px solid #86efac;border-left:4px solid var(--ok);border-radius:12px;padding:14px 18px;margin-top:14px;font-size:.93rem}
+.tabs{display:flex;gap:8px;margin:26px 0 14px;flex-wrap:wrap;align-items:center}
+.tabs button{font:inherit;font-weight:700;border:1px solid var(--line);background:#fff;padding:.6em 1.2em;border-radius:999px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.tabs .sp{flex:1}
+.zoom button{width:38px;padding:.5em 0}
+.grid{display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+.viewer{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:auto;height:min(78vh,900px);position:relative;touch-action:pan-x pan-y}
+.stage{position:relative;transform-origin:0 0;width:100%}
+.stage img{width:100%;display:block}
+.mk{--c:var(--ok);position:absolute;transform:translate(-50%,-50%);width:2.9%;aspect-ratio:2/1.15;border:2px solid var(--c);border-radius:4px;background:transparent;cursor:pointer;padding:0}
+.mk span{position:absolute;left:50%;bottom:calc(100% + 3px);transform:translateX(-50%);font:700 10px/1 Manrope,sans-serif;padding:3px 5px;border-radius:5px;color:#fff;background:var(--c);white-space:nowrap;box-shadow:0 2px 5px rgba(0,0,0,.3)}
+.mk.sold{--c:var(--sold)}
+.mk.warn{--c:var(--warn)}
+.mk.sel{--c:var(--gold);border-width:3px;z-index:3;box-shadow:0 0 0 4px rgba(201,164,106,.35)}
+.mk.sel span{color:#1a1408}
+.legend{display:flex;gap:14px;font-size:.82rem;color:var(--muted);margin:8px 2px 0;flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:4px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.panel h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;padding:14px 16px;border-bottom:1px solid var(--line);font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
+.panel h3 small{font-family:Manrope;font-weight:600;color:var(--muted);font-size:.8rem}
+.tbl{max-height:min(70vh,820px);overflow:auto}
+table{width:100%;border-collapse:collapse;font-size:.86rem}
+th{position:sticky;top:0;background:#f1ece4;text-align:left;padding:8px 10px;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);z-index:1}
+td{padding:8px 10px;border-top:1px solid var(--line);white-space:nowrap}
+tr.blk td{background:var(--ink2);color:var(--gold2);font-weight:700;font-size:.8rem;letter-spacing:.08em}
+tr.row{cursor:pointer}
+tr.row:hover td{background:#faf6ef}
+tr.sel td{background:#f6ead3!important}
+tr.warn td.area{color:var(--warn);font-weight:700}
+.st{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.75rem;font-weight:700}
+.st.l{background:#dcfce7;color:#166534}.st.v{background:#e5e7eb;color:#4b5563}
+td input{width:18px;height:18px;accent-color:var(--ok)}
+.prog{font-size:.82rem;color:var(--muted)}
+footer{padding:30px 16px 50px;color:var(--muted);font-size:.82rem}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <h1>Conferência de unidades <span>Morar Bem 1</span></h1>
+  <p>Cada número abaixo foi lido diretamente das plantas originais de cada pavimento e cruzado com a tabela de disponibilidade. Confira a posição e os dados de cada unidade antes de construirmos a maquete 3D.</p>
+  <div class="chips" id="chips"></div>
+</div></header>
+
+<main class="wrap">
+  <div id="avisos"></div>
+  <div class="tabs">
+    <button data-f="1" class="on">1º andar</button><button data-f="2">2º andar</button><button data-f="3">3º andar</button>
+    <span class="sp"></span>
+    <span class="zoom"><button data-z="-1" aria-label="Diminuir zoom">−</button> <button data-z="1" aria-label="Aumentar zoom">+</button></span>
+  </div>
+  <div class="grid">
+    <div>
+      <div class="viewer" id="viewer"><div class="stage" id="stage"><img id="plan" alt="Planta do pavimento"></div></div>
+      <div class="legend"><span><i style="background:var(--ok)"></i>Disponível</span><span><i style="background:var(--sold)"></i>Vendida</span><span><i style="background:#fff;outline:3px solid var(--warn)"></i>Metragem diferente entre planta e tabela</span><span>Toque num número para ver os dados.</span></div>
+    </div>
+    <div class="panel">
+      <h3><span id="ttl">1º andar</span><small class="prog" id="prog"></small></h3>
+      <div class="tbl"><table><thead><tr><th>✓</th><th>Unidade</th><th>Tipo</th><th>Área</th><th>Valor</th><th>Entrega</th><th>Situação</th></tr></thead><tbody id="tb"></tbody></table></div>
+    </div>
+  </div>
+</main>
+<footer class="wrap">Fonte: plantas MorarBem1 (1º, 2º e 3º pavimento) e tabela de disponibilidade de novembro/2026. A marcação ✓ fica salva só neste navegador, para ajudar na sua conferência.</footer>
+
+<script src="../dados/unidades-maquete.js"></script>
+<script>
+const U = window.UNIDADES_MAQUETE, AV = window.AVISOS_CONFERENCIA;
+const brl = n => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const m2 = n => n.toFixed(2).replace(".", ",") + " m²";
+const warnSet = new Set(AV.map(a => a.split(":")[0]));
+let floor = 1, zoom = 1, sel = null;
+let ok = {}; try { ok = JSON.parse(localStorage.getItem("conf-mb1") || "{}"); } catch (e) {}
+const save = () => { try { localStorage.setItem("conf-mb1", JSON.stringify(ok)); } catch (e) {} };
+
+const vend = U.filter(u => u.vendida).length;
+document.getElementById("chips").innerHTML =
+  `<span class="chip"><b>${U.length}</b> unidades nas plantas</span><span class="chip"><b>118</b> na tabela</span>` +
+  `<span class="chip"><b>${U.length - vend}</b> disponíveis</span><span class="chip"><b>${vend}</b> vendidas</span>` +
+  `<span class="chip"><b>${U.filter(u => u.tipo === "Estúdio").length}</b> estúdios · <b>${U.filter(u => u.tipo !== "Estúdio").length}</b> apartamentos</span>`;
+document.getElementById("avisos").innerHTML =
+  `<div class="ok-box">✔ Todas as unidades da tabela foram encontradas nas plantas, cada uma no bloco e no andar corretos. Nenhuma unidade sobrando ou faltando.</div>` +
+  (AV.length ? `<div class="avisos"><h2>Pontos para você confirmar com a construtora</h2><ul>${AV.map(a => `<li>${a}</li>`).join("")}</ul></div>` : "");
+
+const stage = document.getElementById("stage"), plan = document.getElementById("plan"), tb = document.getElementById("tb");
+function render() {
+  document.querySelectorAll(".tabs [data-f]").forEach(b => b.classList.toggle("on", +b.dataset.f === floor));
+  document.getElementById("ttl").textContent = floor + "º andar";
+  plan.src = `andar${floor}.jpg`;
+  stage.querySelectorAll(".mk").forEach(m => m.remove());
+  const list = U.filter(u => u.andar === floor);
+  list.forEach(u => {
+    const m = document.createElement("button");
+    m.className = "mk" + (u.vendida ? " sold" : "") + (warnSet.has(u.u) ? " warn" : "") + (sel === u.u ? " sel" : "");
+    m.style.left = (u.pagina[0] * 100) + "%"; m.style.top = (u.pagina[1] * 100) + "%";
+    m.innerHTML = `<span>${u.u}</span>`; m.dataset.u = u.u; m.title = u.u; m.onclick = () => pick(u.u, true);
+    stage.appendChild(m);
+  });
+  let html = "";
+  "ABCDEFGH".split("").forEach(b => {
+    const rows = list.filter(u => u.bloco === b); if (!rows.length) return;
+    html += `<tr class="blk"><td colspan="7">BLOCO ${b} · ${rows[0].etapa}ª ETAPA</td></tr>`;
+    rows.forEach(u => {
+      const w = warnSet.has(u.u);
+      html += `<tr class="row${w ? " warn" : ""}${sel === u.u ? " sel" : ""}" data-u="${u.u}">
+        <td><input type="checkbox" ${ok[u.u] ? "checked" : ""} data-ok="${u.u}" aria-label="Conferido ${u.u}"></td>
+        <td><b>${u.u}</b></td><td>${u.tipo === "Estúdio" ? "Estúdio" : "Apto 2Q"}</td>
+        <td class="area">${m2(u.m2)}${w ? ` <small>(planta ${m2(u.m2Planta)})</small>` : ""}${u.m2Garagem ? `<br><small>${m2(u.m2Garagem)} c/ garagem</small>` : ""}</td>
+        <td>${u.vendida ? "—" : brl(u.preco)}</td><td>${u.entrega}</td>
+        <td><span class="st ${u.vendida ? "v" : "l"}">${u.vendida ? "Vendida" : "Disponível"}</span></td></tr>`;
+    });
+  });
+  tb.innerHTML = html;
+  const n = list.length, c = list.filter(u => ok[u.u]).length;
+  document.getElementById("prog").textContent = `${n} unidades · ${c} conferidas`;
+  applyZoom();
+}
+function pick(u, scrollRow) {
+  sel = u; render();
+  if (scrollRow) document.querySelector(`tr[data-u="${u}"]`)?.scrollIntoView({ block: "center", behavior: "smooth" });
+  else { const m = stage.querySelector(`.mk[data-u="${u}"]`); m?.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" }); }
+}
+function applyZoom() { stage.style.width = (zoom * 100) + "%"; stage.querySelectorAll(".mk span").forEach(s => s.style.fontSize = (9 + zoom) + "px"); }
+document.querySelectorAll(".tabs [data-f]").forEach(b => b.onclick = () => { floor = +b.dataset.f; sel = null; render(); });
+document.querySelectorAll("[data-z]").forEach(b => b.onclick = () => { zoom = Math.min(4, Math.max(1, zoom + +b.dataset.z)); applyZoom(); });
+tb.addEventListener("click", e => {
+  const cb = e.target.closest("[data-ok]");
+  if (cb) { ok[cb.dataset.ok] = cb.checked; save(); const list = U.filter(u => u.andar === floor); document.getElementById("prog").textContent = `${list.length} unidades · ${list.filter(u => ok[u.u]).length} conferidas`; return; }
+  const r = e.target.closest("tr.row"); if (r) { if (zoom < 2) zoom = 2; pick(r.dataset.u, false); }
+});
+render();
+</script>
+</body>
+</html>
