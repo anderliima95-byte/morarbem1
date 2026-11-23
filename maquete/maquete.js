@@ -84,6 +84,74 @@ const texLogo = canvasTex(256, 256, (g, w, h) => {
   g.font = "900 92px Manrope, Arial, sans-serif"; g.textAlign = "center"; g.textBaseline = "middle"; g.fillText("3A", 128, 150);
 });
 
+/* janelas: interior aceso (cortina, persiana, pessoa, abajur) e vidro escuro */
+function frameWin(g, w, h) {
+  g.fillStyle = "#2a2d31"; g.fillRect(0, 0, w, 5); g.fillRect(0, h - 6, w, 6); g.fillRect(0, 0, 5, h); g.fillRect(w - 5, 0, 5, h); g.fillRect(w / 2 - 2, 0, 4, h);
+}
+function curtains(g, w, h, cw, c1, c2) {
+  for (const side of [0, 1]) for (let i = 0; i < cw; i += 6) {
+    const x = side ? w - 5 - cw + i : 5 + i; const gr = g.createLinearGradient(x, 0, x + 6, 0);
+    gr.addColorStop(0, c1); gr.addColorStop(.5, c2); gr.addColorStop(1, c1); g.fillStyle = gr; g.fillRect(x, 5, 6, h - 11);
+  }
+}
+const WIN_KINDS = ["curtains", "person", "blinds", "lamp", "person2"];
+const winTex = WIN_KINDS.map(kind => canvasTex(128, 96, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, 0, h); gr.addColorStop(0, "#ffe7b4"); gr.addColorStop(1, "#f2a75a"); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  g.fillStyle = "rgba(150,90,40,.25)"; g.fillRect(5, h * .72, w - 10, h * .28);
+  if (kind === "blinds") { for (let y = 8; y < h - 6; y += 7) { g.fillStyle = "rgba(140,85,35,.42)"; g.fillRect(5, y, w - 10, 3); } }
+  if (kind === "curtains") curtains(g, w, h, 34, "#d99a52", "#f6c98a");
+  if (kind === "person" || kind === "person2") {
+    curtains(g, w, h, kind === "person" ? 22 : 16, "#c98a48", "#efbd7d");
+    const x = kind === "person" ? 80 : 46;
+    g.fillStyle = "rgba(55,32,14,.6)"; g.beginPath(); g.arc(x, 38, 9, 0, Math.PI * 2); g.fill();
+    g.beginPath(); g.moveTo(x - 17, h - 6); g.quadraticCurveTo(x - 16, 52, x, 50); g.quadraticCurveTo(x + 16, 52, x + 17, h - 6); g.fill();
+  }
+  if (kind === "lamp") {
+    const r = g.createRadialGradient(92, 40, 2, 92, 40, 34); r.addColorStop(0, "rgba(255,250,220,.95)"); r.addColorStop(1, "rgba(255,220,150,0)"); g.fillStyle = r; g.fillRect(50, 5, 75, 80);
+    g.fillStyle = "rgba(70,40,18,.55)"; g.beginPath(); g.moveTo(84, 32); g.lineTo(100, 32); g.lineTo(104, 46); g.lineTo(80, 46); g.fill(); g.fillRect(91, 46, 2, 30);
+    g.fillStyle = "rgba(40,60,25,.55)"; for (let i = 0; i < 6; i++) { g.beginPath(); g.ellipse(26 + Math.sin(i) * 6, 70 - i * 7, 9, 4, i * .7, 0, Math.PI * 2); g.fill(); } g.fillRect(22, 74, 10, 16);
+  }
+  frameWin(g, w, h);
+}));
+const texGlass = canvasTex(128, 96, (g, w, h) => {
+  const gr = g.createLinearGradient(0, 0, w, h); gr.addColorStop(0, "#5a7896"); gr.addColorStop(.45, "#203247"); gr.addColorStop(1, "#142336"); g.fillStyle = gr; g.fillRect(0, 0, w, h);
+  g.fillStyle = "rgba(255,255,255,.13)"; g.beginPath(); g.moveTo(20, 0); g.lineTo(48, 0); g.lineTo(14, h); g.lineTo(-14, h); g.fill();
+  g.fillStyle = "rgba(255,255,255,.07)"; g.beginPath(); g.moveTo(70, 0); g.lineTo(82, 0); g.lineTo(60, h); g.lineTo(48, h); g.fill();
+  frameWin(g, w, h);
+});
+const texDoor = canvasTex(64, 128, (g, w, h) => { g.fillStyle = "#6e4a30"; g.fillRect(0, 0, w, h); for (let x = 4; x < w; x += 8) { g.fillStyle = "#83593a"; g.fillRect(x, 0, 4, h); } g.fillStyle = "#2a2d31"; g.fillRect(0, 0, w, 4); g.fillRect(0, 0, 4, h); g.fillRect(w - 4, 0, 4, h); g.fillStyle = "#d8d2c4"; g.fillRect(w - 14, h * .52, 6, 3); });
+
+/* textos fixos (asfalto, telhado, fachada) */
+function textTex(text, o = {}) {
+  const h = o.h || 128, c = document.createElement("canvas"), g = c.getContext("2d");
+  const font = `${o.weight || 800} ${h * .58}px Manrope, Arial, sans-serif`;
+  g.font = font; const pad = o.pad ?? h * .35; const w = Math.ceil(g.measureText(text).width + pad * 2);
+  c.width = w; c.height = h; g.font = font; g.textAlign = "center"; g.textBaseline = "middle";
+  if (o.bg) { g.fillStyle = o.bg; const r = h * .22; g.beginPath(); g.roundRect ? g.roundRect(2, 2, w - 4, h - 4, r) : g.rect(2, 2, w - 4, h - 4); g.fill(); }
+  if (o.stroke) { g.lineWidth = h * .07; g.strokeStyle = o.stroke; g.strokeText(text, w / 2, h / 2 + h * .04); }
+  g.fillStyle = o.fg || "#fff"; g.fillText(text, w / 2, h / 2 + h * .04);
+  const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8;
+  return { tex: t, aspect: w / h };
+}
+// texto deitado no chão/telhado, alinhado à direção dir2 (Vector2 no plano x,z)
+function flatText(text, p2, dir2, height, y, o = {}) {
+  const { tex, aspect } = textTex(text, o);
+  const mat = new THREE.MeshStandardMaterial({ map: tex, transparent: true, depthWrite: false, roughness: .9, polygonOffset: true, polygonOffsetFactor: -4, opacity: o.opacity ?? 1 });
+  if (o.emissive) { mat.emissive = new THREE.Color(0xffffff); mat.emissiveMap = tex; mat.emissiveIntensity = 0; (M.nightText ||= []).push(mat); }
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(height * aspect, height), mat);
+  m.rotation.order = "YXZ"; m.rotation.y = Math.atan2(-dir2.y, dir2.x); m.rotation.x = -Math.PI / 2;
+  m.position.set(p2.x, y, p2.y); m.receiveShadow = true; scene.add(m); return m;
+}
+// letreiro na fachada (plano vertical virado para a normal)
+function wallText(text, p2, n2, width, height, y, o = {}) {
+  const { tex, aspect } = textTex(text, o);
+  const mat = new THREE.MeshStandardMaterial({ map: tex, transparent: !o.bg || o.transparent, roughness: .6, emissive: 0xffffff, emissiveMap: tex, emissiveIntensity: .05 });
+  (M.signs ||= []).push(mat);
+  const w = width || height * aspect, hh = width ? width / aspect : height;
+  const m = new THREE.Mesh(new THREE.PlaneGeometry(w, hh), mat);
+  m.position.copy(V3(p2, y)); m.lookAt(m.position.clone().add(V3(n2))); scene.add(m); return m;
+}
+
 /* ---------- Materiais ---------- */
 const M = {
   wall: new THREE.MeshStandardMaterial({ color: 0xecebe6, roughness: .88 }),
@@ -109,8 +177,10 @@ const M = {
   zebra: new THREE.MeshStandardMaterial({ color: 0xf2efe6, roughness: .8, polygonOffset: true, polygonOffsetFactor: -2 }),
   wallSite: new THREE.MeshStandardMaterial({ color: 0xe9e6df, roughness: .9 }),
   // janelas das unidades
-  winOff: new THREE.MeshStandardMaterial({ color: 0x1d2b3c, roughness: .18, metalness: .55 }),
-  winOn: new THREE.MeshStandardMaterial({ color: 0x3a2a14, emissive: 0xffc477, emissiveIntensity: 1.2, roughness: .4 }),
+  winOff: new THREE.MeshStandardMaterial({ map: texGlass, roughness: .15, metalness: .35 }),
+  winOnVar: winTex.map(t => new THREE.MeshStandardMaterial({ map: t, emissive: 0xffffff, emissiveMap: t, emissiveIntensity: 1, roughness: .5 })),
+  door: new THREE.MeshStandardMaterial({ map: texDoor, roughness: .8 }),
+  winSmall: new THREE.MeshStandardMaterial({ map: texGlass, roughness: .2, metalness: .3 }),
   winSel: new THREE.MeshStandardMaterial({ color: 0x3a2a14, emissive: 0xe3c995, emissiveIntensity: 2.4, roughness: .3 }),
   winDim: new THREE.MeshStandardMaterial({ color: 0x8c8f94, roughness: .6, transparent: true, opacity: .55 }),
   hit: new THREE.MeshBasicMaterial({ visible: false, side: THREE.DoubleSide }),
@@ -251,12 +321,14 @@ function buildBox(box) {
   // fachada de lojas: letreiros
   if (box.shop === "row") {
     const fi = F.face("dc"), n = fi.n;
-    const pA = fi.p0.clone().lerp(fi.p1, .58), pB = fi.p0.clone().lerp(fi.p1, .98);
-    facePlane(pA, pB, n, CFG.tTerreo - .55, CFG.tTerreo - .05, F.D * .02 + 1.85, new THREE.MeshStandardMaterial({ map: signTex("FITNESS · ACADEMIA", "#2a2f2c", "#f4efe6", 768, 96) }));
-    const pC = fi.p0.clone().lerp(fi.p1, .06), pD = fi.p0.clone().lerp(fi.p1, .40);
-    facePlane(pC, pD, n, CFG.tTerreo - .55, CFG.tTerreo - .05, F.D * .02 + 1.85, new THREE.MeshStandardMaterial({ map: signTex("PONTO COMERCIAL", "#2a2f2c", "#e3c995", 768, 96) }));
-    label("Academia", "lbl-shop", V3(fi.p0.clone().lerp(fi.p1, .78).add(n.clone().multiplyScalar(3)), 4.6));
-    label("Ponto comercial", "lbl-shop", V3(fi.p0.clone().lerp(fi.p1, .23).add(n.clone().multiplyScalar(3)), 4.6));
+    // faixa escura sob a marquise + letreiros fixos
+    const off = F.D * .02 + 1.86;
+    const pA = fi.p0.clone().lerp(fi.p1, .55), pB = fi.p0.clone().lerp(fi.p1, .985);
+    facePlane(pA, pB, n, CFG.tTerreo - 1.05, CFG.tTerreo - .2, off, new THREE.MeshStandardMaterial({ color: 0x23282a, roughness: .6 }));
+    wallText("ACADEMIA · FITNESS", pA.clone().lerp(pB, .5).add(n.clone().multiplyScalar(off + .03)), n, null, .62, CFG.tTerreo - .62, { fg: "#f4efe6", pad: 30 });
+    const pC = fi.p0.clone().lerp(fi.p1, .05), pD = fi.p0.clone().lerp(fi.p1, .42);
+    facePlane(pC, pD, n, CFG.tTerreo - 1.05, CFG.tTerreo - .2, off, new THREE.MeshStandardMaterial({ color: 0x23282a, roughness: .6 }));
+    wallText("PONTO COMERCIAL", pC.clone().lerp(pD, .5).add(n.clone().multiplyScalar(off + .03)), n, null, .62, CFG.tTerreo - .62, { fg: "#e3c995", pad: 30 });
   }
   if (box.shop === "pharm") {
     const tex = signTex("3A FARMÁCIA", "#21372c", "#ffffff", 640, 110, (g, w, h) => { g.fillStyle = "#c0392b"; g.fillRect(w - 70, h / 2 - 8, 44, 16); g.fillRect(w - 56, h / 2 - 22, 16, 44); });
@@ -265,7 +337,6 @@ function buildBox(box) {
     ["dc"].forEach(f => { const fi = F.face(f); facePlane(fi.p0, fi.p1, fi.n, CFG.tTerreo - 1.0, CFG.tTerreo - .1, F.D * .02 + .1, mat); });
     const sc = { p0: F.c, p1: F.b }; const tan = sc.p1.clone().sub(sc.p0).normalize(); let n = new THREE.Vector2(-tan.y, tan.x); if (n.dot(sc.p0.clone().lerp(sc.p1, .5).sub(F.center)) < 0) n.negate();
     facePlane(sc.p0, sc.p1, n, CFG.tTerreo - 1.0, CFG.tTerreo - .1, .1, mat);
-    label("Farmácia", "lbl-shop", V3(F.center.clone().add(F.face("dc").n.clone().multiplyScalar(F.D / 2 + 3)), 4.8));
     // aleta bordô na esquina
     orientedBox(V3(F.a.clone().lerp(F.d, .5), (yTopo + 2.4) / 2), F.u, new THREE.Vector2(-F.u.y, F.u.x), .7, yTopo + 2.4, 1.4, M.burg);
   }
@@ -274,7 +345,8 @@ function buildBox(box) {
     orientedBox(V3(pm.clone().add(off).add(fi.tan.clone().multiplyScalar(-2)), 1.9), fi.tan, fi.n, .5, 3.8, .7, M.burg);
     orientedBox(V3(pm.clone().add(off).add(fi.tan.clone().multiplyScalar(2)), 1.9), fi.tan, fi.n, .5, 3.8, .7, M.burg);
     orientedBox(V3(pm.clone().add(off), 3.95), fi.tan, fi.n, 4.5, .45, .8, M.burg);
-    label("Portaria", "lbl-shop", V3(pm.clone().add(fi.n.clone().multiplyScalar(4)), 5));
+    wallText("PORTARIA", pm.clone().add(off).add(fi.n.clone().multiplyScalar(.42)), fi.n, null, .38, 3.95, { fg: "#f4efe6", pad: 18 });
+    wallText("MORAR BEM 1", pm.clone().add(fi.n.clone().multiplyScalar(.06)).add(fi.tan.clone().multiplyScalar(4.6)), fi.n, null, .55, 3.1, { fg: "#6b2a2a", pad: 10 });
   }
 }
 
@@ -293,9 +365,20 @@ function buildUnitWindows(box) {
         const c = fi.p0.clone().lerp(fi.p1, sm);
         const ww = clamp(span * .58, 1.4, 3.2), wh = 1.5;
         const isGal = fname === box.gal;
-        const win = new THREE.Mesh(new THREE.PlaneGeometry(ww, wh), u.vendida ? M.winOn : M.winOff);
+        if (!u.litMat) { let hsh = 0; for (const ch of u.u) hsh = (hsh * 31 + ch.charCodeAt(0)) >>> 0; u.litMat = M.winOnVar[hsh % M.winOnVar.length]; }
+        const win = new THREE.Mesh(new THREE.PlaneGeometry(ww, wh), u.vendida ? u.litMat : M.winOff);
         const pos = V3(c.clone().add(fi.n.clone().multiplyScalar(.06)), y + 1.55);
         win.position.copy(pos); win.lookAt(pos.clone().add(V3(fi.n))); scene.add(win);
+        // peitoril e verga
+        orientedBox(V3(c.clone().add(fi.n.clone().multiplyScalar(.12)), y + 1.55 - wh / 2 - .05), fi.tan, fi.n, ww + .3, .09, .24, M.band, false);
+        orientedBox(V3(c.clone().add(fi.n.clone().multiplyScalar(.08)), y + 1.55 + wh / 2 + .05), fi.tan, fi.n, ww + .16, .07, .16, M.band, false);
+        if (isGal && span > ww + 2.1) { // porta de entrada no corredor
+          const dp = c.clone().add(fi.tan.clone().multiplyScalar(ww / 2 + .75)).add(fi.n.clone().multiplyScalar(.05));
+          const door = new THREE.Mesh(new THREE.PlaneGeometry(.9, 2.15), M.door); door.position.copy(V3(dp, y + 1.08)); door.lookAt(door.position.clone().add(V3(fi.n))); scene.add(door);
+        } else if (!isGal && span > ww + 1.9) { // janelinha do banheiro
+          const sp = c.clone().add(fi.tan.clone().multiplyScalar(ww / 2 + .8)).add(fi.n.clone().multiplyScalar(.05));
+          const sw = new THREE.Mesh(new THREE.PlaneGeometry(.7, .45), M.winSmall); sw.position.copy(V3(sp, y + 2.05)); sw.lookAt(sw.position.clone().add(V3(fi.n))); scene.add(sw);
+        }
         const ol = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.PlaneGeometry(ww + .3, wh + .3)), M.outline);
         ol.position.copy(pos).add(V3(fi.n).multiplyScalar(.03)); ol.quaternion.copy(win.quaternion); ol.visible = false; scene.add(ol);
         u.windows.push({ mesh: win, outline: ol, normal: V3(fi.n), pos, gallery: isGal, face: fname });
@@ -414,13 +497,10 @@ function buildSurroundings() {
   // faixas de pedestre na esquina
   const zebra = (s, at) => { for (let i = -3; i <= 3; i++) { const p = s.a.clone().add(s.d.clone().multiplyScalar(at)).add(s.n.clone().multiplyScalar(i * 1.15)); orientedBox(V3(p, .09), s.d, s.n, 3.2, .02, .55, M.zebra, false); } };
   zebra(tv, 340 + 12); zebra(se, 12);
-  // rótulos
-  label(tv.name, "lbl-street", V3(tv.a.clone().add(tv.d.clone().multiplyScalar(340 - 30)), .5));
-  label(tv.name, "lbl-street", V3(tv.a.clone().add(tv.d.clone().multiplyScalar(340 + 70)), .5));
-  label(se.name, "lbl-street", V3(se.a.clone().add(se.d.clone().multiplyScalar(60)), .5));
-  label(ar.name, "lbl-street", V3(ar.a.clone().add(ar.d.clone().multiplyScalar(70)), .5));
-  label(ge.name, "lbl-street", V3(ge.a.clone().add(ge.d.clone().multiplyScalar(60)), .5));
-  label(jq.name, "lbl-street", V3(jq.a.clone().add(jq.d.clone().multiplyScalar(80)), .5));
+  // nomes das ruas pintados no asfalto
+  const STREET_TXT = [[tv, "TRAVESSA RESISTÊNCIA", [340 - 40, 340 + 80, 340 - 170]], [se, "RUA SANTO EXPEDITO", [55, 165, 290]], [ar, "RUA VISCONDE DE ARACAJU", [65, 190]], [ge, "RUA GÊNESIS", [50, 160]], [jq, "RUA JOÃO QUEIRÓS", [70, 190]], [jq2, "RUA JOÃO QUEIRÓS", [80]]];
+  const txtSpots = [];
+  STREET_TXT.forEach(([s, txt, ts]) => ts.forEach(t => { if (t > s.len - 15) return; txtSpots.push(s.a.clone().add(s.d.clone().multiplyScalar(t))); flatText(txt, s.a.clone().add(s.d.clone().multiplyScalar(t)), s.d, 2.6, .095, { fg: "rgba(246,242,232,.9)", pad: 20, emissive: true }); }));
   // áreas abertas (terra) ao sul
   const openSE = p => p.clone().sub(se.a).dot(seOut) > se.half && p.clone().sub(tv.a).dot(tvOut.clone().negate()) > 0;
   const openSW = p => p.clone().sub(tv.a).dot(tvOut) > tv.half && p.clone().sub(ge.a).dot(new THREE.Vector2(0, 1)) > 12;
@@ -428,70 +508,98 @@ function buildSurroundings() {
   earthPatch([se.a.clone().add(seOut.clone().multiplyScalar(9)), se.b.clone().add(seOut.clone().multiplyScalar(9)), se.b.clone().add(seOut.clone().multiplyScalar(260)), se.a.clone().add(seOut.clone().multiplyScalar(260)).add(tv.d.clone().multiplyScalar(-40))]);
   const gS = ge.a.clone().add(new THREE.Vector2(0, 14));
   earthPatch([gS.clone().add(tvOut.clone().multiplyScalar(9)), gS.clone().add(new THREE.Vector2(-320, 0)), gS.clone().add(new THREE.Vector2(-320, 330)), gS.clone().add(tvOut.clone().multiplyScalar(9)).add(tv.d.clone().multiplyScalar(320))]);
-  // casas ao longo das ruas
+  // casas e pequenos prédios ao longo das ruas
   const inSite = p => { const c = sitePts.reduce((a, b) => a.clone().add(b)).multiplyScalar(.25); const P = sitePts.map(q => q.clone().add(q.clone().sub(c).normalize().multiplyScalar(8))); let inside = false; for (let i = 0, j = 3; i < 4; j = i++) { if (((P[i].y > p.y) !== (P[j].y > p.y)) && (p.x < (P[j].x - P[i].x) * (p.y - P[i].y) / (P[j].y - P[i].y) + P[i].x)) inside = !inside; } return inside; };
   const church = new THREE.Vector2(36, -58);
-  const placed = [];
-  const houses = [], lit = [];
+  const placed = [], houses = [];
   const ok = (p, r) => {
     if (inSite(p) || p.distanceTo(church) < 16) return false;
     for (const s of STREETS) if (distToStreet(p, s) < s.half + r * .7) return false;
-    for (const q of placed) if (q.p.distanceTo(p) < (q.r + r) * .82) return false;
+    for (const q of placed) if (q.p.distanceTo(p) < (q.r + r) * .8) return false;
     return true;
   };
-  const maxR = isMobile ? 230 : 300;
+  const maxR = isMobile ? 270 : 340;
   STREETS.forEach(s => {
-    for (const side of [1, -1]) for (let row = 0; row < 3; row++) {
-      for (let t = 6; t < s.len - 6; t += 10 + rnd() * 5) {
-        const w = 6.5 + rnd() * 3.5, d = 8 + rnd() * 5, h = 2.9 + (rnd() < .14 ? 3 : 0) + rnd() * .6;
-        const off = s.half + 2 + d / 2 + row * (d + 5) + rnd() * 2;
+    for (const side of [1, -1]) for (let row = 0; row < 4; row++) {
+      for (let t = 5; t < s.len - 5; t += 8.5 + rnd() * 4) {
+        const tall = rnd() < .09;
+        const w = tall ? 10 + rnd() * 5 : 6 + rnd() * 3.5, d = tall ? 10 + rnd() * 4 : 8 + rnd() * 5;
+        const floors = tall ? 2 + Math.floor(rnd() * 2) : (rnd() < .12 ? 2 : 1);
+        const h = floors * 3 + rnd() * .4;
+        const off = s.half + 2 + d / 2 + row * (d + 4.5) + rnd() * 2;
         const p = s.a.clone().add(s.d.clone().multiplyScalar(t)).add(s.n.clone().multiplyScalar(side * off));
         if (p.length() > maxR) continue;
         const open = openSE(p) || openSW(p);
-        if (open ? rnd() > .07 : rnd() > (row === 0 ? .9 : .6)) continue;
+        if (open ? rnd() > .07 : rnd() > (row === 0 ? .96 : row === 1 ? .82 : .62)) continue;
         const r = Math.max(w, d) * .55;
         if (!ok(p, r)) continue;
-        placed.push({ p, r }); houses.push({ p, w, d, h, ang: Math.atan2(-s.d.y, s.d.x), face: s.n.clone().multiplyScalar(-side) });
+        placed.push({ p, r }); houses.push({ p, w, d, h, floors, tall, along: s.d.clone(), face: s.n.clone().multiplyScalar(-side) });
       }
     }
   });
-  const hCols = [0xf3efe6, 0xe9dcc8, 0xd9e3e6, 0xf0d9c2, 0xe4e8d8, 0xd8cdbf, 0xc9d6df, 0xf2e4c4];
+  const hCols = [0xf3efe6, 0xe9dcc8, 0xd9e3e6, 0xf0d9c2, 0xe4e8d8, 0xd8cdbf, 0xc9d6df, 0xf2e4c4, 0xe7cfc0, 0xd4e0cc];
   const rCols = [0xa4533a, 0x8b4a35, 0x6f7377, 0xb06a49, 0x7d8085];
   const box = new THREE.InstancedMesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshStandardMaterial({ roughness: .95 }), houses.length);
   const roofG = new THREE.ConeGeometry(.7071, 1, 4); roofG.rotateY(Math.PI / 4);
   const roof = new THREE.InstancedMesh(roofG, new THREE.MeshStandardMaterial({ roughness: .9 }), houses.length);
-  const winG = new THREE.PlaneGeometry(1.1, .9);
-  const wins = new THREE.InstancedMesh(winG, M.houseWin, houses.length);
-  const mtx = new THREE.Matrix4(), q = new THREE.Quaternion(), col = new THREE.Color();
+  const mtx = new THREE.Matrix4(), q = new THREE.Quaternion(), col = new THREE.Color(), up = new THREE.Vector3(0, 1, 0);
+  const winLit = [], winDark = [], doors = [];
+  const o3 = new THREE.Object3D();
+  const putPlane = (list, p3, n3, sx, sy) => { o3.position.copy(p3); o3.scale.set(sx, sy, 1); o3.lookAt(p3.clone().add(n3)); o3.updateMatrix(); list.push(o3.matrix.clone()); };
   houses.forEach((hs, i) => {
-    q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), hs.ang);
+    const ang = Math.atan2(-hs.along.y, hs.along.x);
+    q.setFromAxisAngle(up, ang);
     mtx.compose(V3(hs.p, hs.h / 2), q, new THREE.Vector3(hs.w, hs.h, hs.d)); box.setMatrixAt(i, mtx); box.setColorAt(i, col.setHex(hCols[i % hCols.length]));
-    mtx.compose(V3(hs.p, hs.h + .9), q, new THREE.Vector3(hs.w * 1.08, 1.8, hs.d * 1.08)); roof.setMatrixAt(i, mtx); roof.setColorAt(i, col.setHex(rCols[Math.floor(rnd() * rCols.length)]));
-    const wp = V3(hs.p.clone().add(hs.face.clone().multiplyScalar(hs.d / 2 + .02)), 1.5);
-    const look = new THREE.Object3D(); look.position.copy(wp); look.lookAt(wp.clone().add(V3(hs.face))); look.updateMatrix();
-    const s = rnd() < .55 ? 1 : 0.0001; look.scale.set(s, s, s); look.updateMatrix(); wins.setMatrixAt(i, look.matrix);
+    const rh = hs.tall ? .35 : 1.7;
+    mtx.compose(V3(hs.p, hs.h + rh / 2), q, new THREE.Vector3(hs.w * (hs.tall ? 1 : 1.08), rh, hs.d * (hs.tall ? 1 : 1.08))); roof.setMatrixAt(i, mtx); roof.setColorAt(i, col.setHex(hs.tall ? 0x6f7377 : rCols[Math.floor(rnd() * rCols.length)]));
+    // janelas e porta: frente (para a rua) e laterais
+    const fN = V3(hs.face), sN = V3(hs.along), front = hs.p.clone().add(hs.face.clone().multiplyScalar(hs.d / 2 + .03));
+    for (let f = 0; f < hs.floors; f++) {
+      const y = f * 3 + 1.6, nW = Math.max(1, Math.floor(hs.w / 3.2));
+      for (let k = 0; k < nW; k++) {
+        const along = (k + .5) / nW - .5;
+        if (f === 0 && k === Math.floor(nW / 2) && !hs.tall) { putPlane(doors, V3(front.clone().add(hs.along.clone().multiplyScalar(along * hs.w)), 1.05), fN, .95, 2.1); continue; }
+        putPlane(rnd() < .38 ? winLit : winDark, V3(front.clone().add(hs.along.clone().multiplyScalar(along * hs.w)), y), fN, 1.2, 1.0);
+      }
+      for (const sd of [1, -1]) {
+        const sideP = hs.p.clone().add(hs.along.clone().multiplyScalar(sd * (hs.w / 2 + .03)));
+        const nS = Math.max(1, Math.floor(hs.d / 4));
+        for (let k = 0; k < nS; k++) { if (rnd() < .3) continue; const a = (k + .5) / nS - .5; putPlane(rnd() < .3 ? winLit : winDark, V3(sideP.clone().add(hs.face.clone().multiplyScalar(a * hs.d)), y), sN.clone().multiplyScalar(sd), 1.0, .9); }
+      }
+    }
   });
   box.castShadow = true; box.receiveShadow = true; roof.castShadow = true;
-  scene.add(box, roof, wins);
+  scene.add(box, roof);
+  const planeG = new THREE.PlaneGeometry(1, 1);
+  M.houseWinLit = new THREE.MeshStandardMaterial({ color: 0x3a3226, emissive: 0xffc98a, emissiveIntensity: 0, roughness: .5 });
+  const glassH = new THREE.MeshStandardMaterial({ color: 0x2c3c4f, roughness: .25, metalness: .3 });
+  const doorH = new THREE.MeshStandardMaterial({ color: 0x6e4a30, roughness: .8 });
+  [[winLit, M.houseWinLit], [winDark, glassH], [doors, doorH]].forEach(([list, mat]) => { const im = new THREE.InstancedMesh(planeG, mat, list.length); list.forEach((m, i) => im.setMatrixAt(i, m)); scene.add(im); });
   // igreja vizinha
   const ch = new THREE.Mesh(new THREE.BoxGeometry(12, 6, 20), new THREE.MeshStandardMaterial({ color: 0xf1efe9 })); ch.position.set(church.x, 3, church.y); ch.castShadow = true; scene.add(ch);
   const chR = new THREE.Mesh(new THREE.ConeGeometry(9, 3.2, 4), new THREE.MeshStandardMaterial({ color: 0x6f7377 })); chR.rotation.y = Math.PI / 4; chR.scale.z = 1.6; chR.position.set(church.x, 7.6, church.y); scene.add(chR);
-  // árvores
+  const cross = new THREE.Mesh(new THREE.BoxGeometry(.25, 2.2, .25), new THREE.MeshStandardMaterial({ color: 0x4a4d52 })); cross.position.set(church.x, 7.4, church.y + 10.2); scene.add(cross);
+  const crossB = new THREE.Mesh(new THREE.BoxGeometry(1.2, .25, .25), cross.material); crossB.position.set(church.x, 7.9, church.y + 10.2); scene.add(crossB);
+  wallText("IGREJA IDPB AMPARO", new THREE.Vector2(church.x, church.y + 10.04), new THREE.Vector2(0, 1), null, .85, 4.6, { fg: "#2a2f35", pad: 16 });
+  // árvores (instanciadas: muitas árvores com poucas chamadas de desenho)
   const trees = [];
-  for (let i = 0; i < (isMobile ? 260 : 420); i++) {
-    const a = rnd() * Math.PI * 2, rr = 40 + Math.sqrt(rnd()) * (maxR - 20);
+  for (let i = 0; i < (isMobile ? 700 : 1200); i++) {
+    const a = rnd() * Math.PI * 2, rr = 30 + Math.sqrt(rnd()) * (maxR - 10);
     const p = new THREE.Vector2(Math.cos(a) * rr, Math.sin(a) * rr);
     const open = openSE(p) || openSW(p);
-    if (open && rnd() > .35) continue;
-    if (!ok(p, 2.5)) continue;
-    placed.push({ p, r: 2.5 }); trees.push({ p, s: 2.2 + rnd() * 2.6 });
+    if (open && rnd() > .3) continue;
+    if (p.length() < 72) continue; // deixa livre a vista do condomínio
+    if (!ok(p, 2.2)) continue;
+    placed.push({ p, r: 2.2 }); trees.push({ p, s: 1.8 + rnd() * 2.8 });
   }
+  // árvores nas calçadas
+  STREETS.forEach(s => { for (let t = 8; t < s.len; t += 13 + rnd() * 10) for (const sd of [1, -1]) { if (rnd() < .45) continue; const p = s.a.clone().add(s.d.clone().multiplyScalar(t)).add(s.n.clone().multiplyScalar(sd * (s.half - .9))); if (p.length() > maxR || p.length() < 75 || inSite(p) || txtSpots.some(q => q.distanceTo(p) < 22)) continue; trees.push({ p, s: 1.6 + rnd() * 1.4 }); } });
   const tr = new THREE.InstancedMesh(new THREE.CylinderGeometry(.18, .28, 1, 5), palmMat.trunk, trees.length);
   const cr = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 0), new THREE.MeshStandardMaterial({ roughness: .9, flatShading: true }), trees.length);
-  const tc = [0x5d8a3f, 0x4c7a35, 0x6e9a48, 0x3f6b30];
+  const tc = [0x5d8a3f, 0x4c7a35, 0x6e9a48, 0x3f6b30, 0x7aa352];
   trees.forEach((t, i) => {
     mtx.compose(V3(t.p, t.s * .7), new THREE.Quaternion(), new THREE.Vector3(1, t.s * 1.4, 1)); tr.setMatrixAt(i, mtx);
-    mtx.compose(V3(t.p, t.s * 1.75), new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), rnd() * 3), new THREE.Vector3(t.s * 1.15, t.s, t.s * 1.15)); cr.setMatrixAt(i, mtx); cr.setColorAt(i, col.setHex(tc[i % tc.length]));
+    mtx.compose(V3(t.p, t.s * 1.75), new THREE.Quaternion().setFromAxisAngle(up, rnd() * 3), new THREE.Vector3(t.s * 1.15, t.s * (.85 + rnd() * .3), t.s * 1.15)); cr.setMatrixAt(i, mtx); cr.setColorAt(i, col.setHex(tc[i % tc.length]));
   });
   tr.castShadow = cr.castShadow = true; scene.add(tr, cr);
   // postes
@@ -502,16 +610,20 @@ function buildSurroundings() {
     const head = new THREE.Mesh(new THREE.BoxGeometry(.6, .18, .3), M.lampHead); head.position.copy(V3(p, 6.5)); scene.add(head);
     const gl = new THREE.Sprite(M.glow.clone()); gl.scale.set(6, 6, 1); gl.position.copy(V3(p, 6.3)); scene.add(gl); (M.lampGlows ||= []).push(gl);
   });
-  // pontos de referência
+  // pontos de referência: placa no chão + marcador fixo no local (dentro do mapa, com a distância real)
   const REFS = [
-    { n: "Igreja IDPB Amparo", e: 36, s: -58, near: true },
-    { n: "Madruga Móveis", e: 323, s: 83 }, { n: "Azulino Store", e: 469, s: -54 },
-    { n: "Residencial Reserva Alvorada", e: -355, s: -43 }, { n: "Botânica Plantas", e: -367, s: -104 }, { n: "Igreja Santa Luzia", e: -564, s: 47 },
+    { n: "MADRUGA MÓVEIS", e: 323, s: 83 }, { n: "AZULINO STORE", e: 469, s: -54 },
+    { n: "RESIDENCIAL RESERVA ALVORADA", e: -355, s: -43 }, { n: "BOTÂNICA PLANTAS", e: -367, s: -104 }, { n: "IGREJA SANTA LUZIA", e: -564, s: 47 },
   ];
+  const pinMat = new THREE.MeshStandardMaterial({ color: 0x2d6cdf, roughness: .4, emissive: 0x2d6cdf, emissiveIntensity: .2 });
   REFS.forEach(r => {
     const p = new THREE.Vector2(r.e, r.s), dist = Math.round(p.length() / 10) * 10;
-    const pos = r.near ? p : p.clone().normalize().multiplyScalar(Math.min(p.length(), maxR - 30));
-    label(`<i>●</i>${r.n}${r.near ? "" : ` <small>· ${dist} m</small>`}`, "lbl-ref", V3(pos, r.near ? 11 : 9));
+    const pos = p.clone().normalize().multiplyScalar(Math.min(p.length(), maxR - 35));
+    const u = pos.clone().normalize(), dir = new THREE.Vector2(-u.y, u.x);
+    flatText(`${r.n} · ${dist} m`, pos, dir, 3.6, .14, { bg: "rgba(255,253,249,.95)", fg: "#1b2433", pad: 26 });
+    const pinP = pos.clone().add(u.clone().multiplyScalar(5));
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(.12, .12, 6, 6), pinMat); pole.position.copy(V3(pinP, 3)); scene.add(pole);
+    const ball = new THREE.Mesh(new THREE.SphereGeometry(1, 16, 12), pinMat); ball.position.copy(V3(pinP, 6.6)); scene.add(ball);
   });
   return { tv, se };
 }
@@ -573,7 +685,10 @@ function setTime(h) {
   sky.material.uniforms.glow.value = smooth(-6, 2, el);
   scene.fog.color.copy(hor);
   stars.material.opacity = n * .95; moon.material.opacity = n;
-  M.winOn.emissiveIntensity = .7 + 2.2 * n;
+  M.winOnVar.forEach(m => m.emissiveIntensity = .55 + 1.25 * n);
+  (M.nightText || []).forEach(m => m.emissiveIntensity = .35 * n);
+  (M.signs || []).forEach(m => m.emissiveIntensity = .05 + .75 * n);
+  M.houseWinLit && (M.houseWinLit.emissiveIntensity = 1.6 * n);
   M.led.emissiveIntensity = .1 + 2.6 * n;
   M.shop.emissiveIntensity = .35 + 1.3 * n;
   M.houseWin.emissiveIntensity = 1.8 * n;
@@ -595,7 +710,7 @@ function refreshUnits() {
   UNITS.forEach(u => {
     const ok = matches(u), sel = state.sel === u;
     u.windows.forEach(w => {
-      w.mesh.material = sel ? M.winSel : !ok ? M.winDim : u.vendida ? M.winOn : M.winOff;
+      w.mesh.material = sel ? M.winSel : !ok ? M.winDim : u.vendida ? u.litMat : M.winOff;
       w.outline.visible = ok && (sel || (state.hi && !u.vendida));
     });
     u.glows.forEach(g => g.visible = ok);
@@ -748,7 +863,12 @@ function build() {
   BOXES.forEach(buildUnitWindows);
   buildStairs();
   // letras dos blocos sobre o telhado
-  "ABCDEFGH".split("").forEach(b => { const us = UNITS.filter(u => u.bloco === b && u.p); const c = us.reduce((a, u) => a.add(u.p), new THREE.Vector2()).multiplyScalar(1 / us.length); label(b, "lbl-block", V3(c, yTopo + 3)); });
+  // letra de cada bloco pintada no telhado
+  const ROOF_OF = { A: "A", B: "B", C: "C", D: "D", E: "E", F: "F", G: "G1", H: "H" };
+  Object.entries(ROOF_OF).forEach(([b, id]) => {
+    const F = BOXES.find(x => x.id === id).F;
+    flatText(`BLOCO ${b}`, F.bil(.5, .3), F.u, Math.min(2.4, F.D * .22), yTopo + .58, { bg: "rgba(201,164,106,.95)", fg: "#1a1408", pad: 22 });
+  });
   setupViews();
   const sold = UNITS.filter(u => u.vendida).length, pct = sold / UNITS.length * 100;
   $("#pct").innerHTML = `${pct.toFixed(1).replace(".", ",")}%<small>VENDIDO · ${sold} DE ${UNITS.length}</small>`;
@@ -756,6 +876,8 @@ function build() {
   $("#tRise").textContent = "Nascer " + fmtH(SUNRISE); $("#tSet").textContent = "Pôr do sol " + fmtH(SUNSET);
   refreshUnits();
 }
+// espera a fonte carregar (até 1,5 s) para os letreiros saírem com a tipografia certa
+await Promise.race([document.fonts.load("800 40px Manrope"), new Promise(r => setTimeout(r, 1500))]).catch(() => {});
 build();
 
 /* abertura */
