@@ -220,6 +220,30 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .sim-foot{font-size:.76rem;color:var(--on-dark-muted);margin-top:14px}
 @media (max-width:860px){.sim{grid-template-columns:1fr}}
 
+/* Maquete 3D */
+.m3d{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(28px,5vw,70px);align-items:center}
+.m3d-vis{position:relative;display:block;border-radius:24px;overflow:hidden;aspect-ratio:16/11;box-shadow:0 40px 80px -40px rgba(0,0,0,.7);isolation:isolate}
+.m3d-vis img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.4s var(--ease)}
+.m3d-vis:hover img{transform:scale(1.12)}
+.m3d-vis::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,38,.05) 30%,rgba(12,22,38,.75));z-index:1}
+.m3d-badge{position:absolute;left:18px;top:18px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(12,22,38,.72);backdrop-filter:blur(8px);border:1px solid rgba(227,201,149,.4);color:var(--gold-2);font-weight:800;font-size:.78rem;letter-spacing:.12em;padding:.5em .9em;border-radius:999px}
+.m3d-badge i{width:8px;height:8px;border-radius:50%;background:var(--gold-2);animation:pulse 2s infinite}
+.m3d-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:rgba(227,201,149,.92);color:#1a1408;box-shadow:0 0 0 12px rgba(227,201,149,.22);animation:ring 2.4s infinite}
+.m3d-play svg{width:34px;height:34px;margin-left:2px}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(227,201,149,.45)}100%{box-shadow:0 0 0 26px rgba(227,201,149,0)}}
+.m3d-dot{position:absolute;z-index:2;width:14px;height:14px;border-radius:50%;background:#ffc477;box-shadow:0 0 14px 4px rgba(255,196,119,.75);animation:blink 3s infinite}
+.m3d-dot.off{background:#1d2b3c;border:2px solid #e3c995;box-shadow:0 0 0 4px rgba(227,201,149,.25)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.45}}
+.m3d-cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;gap:10px;color:var(--on-dark);font-size:.82rem;font-weight:600;flex-wrap:wrap}
+.m3d-cap span{display:flex;align-items:center;gap:6px}
+.m3d-cap i{width:12px;height:9px;border-radius:2px}
+.m3d ul{list-style:none;display:grid;gap:12px;margin:24px 0 30px}
+.m3d li{display:flex;gap:12px;align-items:flex-start;color:var(--on-dark-muted)}
+.m3d li b{color:var(--on-dark)}
+.m3d li svg{width:22px;height:22px;flex:none;color:var(--gold-2);margin-top:1px}
+@media (max-width:860px){.m3d{grid-template-columns:1fr}.m3d-play{width:68px;height:68px}}
+.stock-3d{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-weight:700;color:var(--gold-deep);text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px}
+
 /* Escassez */
 .stock{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
 .stock .s{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px}
@@ -546,6 +570,31 @@ footer b{color:var(--on-dark)}
   </div>
 </section>
 
+<!-- ============ MAQUETE 3D ============ -->
+<section class="sec dark" id="maquete3d">
+  <div class="wrap m3d">
+    <a class="m3d-vis rv" href="maquete/" aria-label="Abrir o mapa de disponibilidade 3D">
+      <img src="img/vista-superior.jpg" alt="Vista aérea do Morar Bem 1" loading="lazy">
+      <span class="m3d-badge"><i></i>MAPA DE DISPONIBILIDADE 3D</span>
+      <span class="m3d-dot" style="left:30%;top:36%"></span><span class="m3d-dot off" style="left:47%;top:58%"></span><span class="m3d-dot" style="left:64%;top:30%"></span><span class="m3d-dot off" style="left:72%;top:62%"></span><span class="m3d-dot off" style="left:22%;top:66%"></span>
+      <span class="m3d-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+      <span class="m3d-cap"><span><i style="background:#ffc477;box-shadow:0 0 8px #ffb35c"></i>Luz acesa · vendida</span><span><i style="background:#1d2b3c;border:1px solid #e3c995"></i>Apagada · disponível</span></span>
+    </a>
+    <div>
+      <span class="eyebrow rv">Exclusivo</span>
+      <h2 class="rv" style="--d:.1s">Escolha sua unidade <em>em 3D.</em></h2>
+      <p class="lead rv" style="--d:.2s">Explore a maquete virtual do Morar Bem 1 e veja, janela por janela, o que ainda está disponível.</p>
+      <ul>
+        <li class="rv" style="--d:.25s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 4v16M4 12h16"/></svg><span><b>Toque numa janela</b> e veja número, bloco, metragem, entrega e valor da unidade.</span></li>
+        <li class="rv" style="--d:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span><b>Arraste o horário</b> e acompanhe o sol real de Santarém, do amanhecer à noite.</span></li>
+        <li class="rv" style="--d:.35s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><span><b>Luz acesa é vendida</b>, apagada está disponível para você.</span></li>
+      </ul>
+      <a href="maquete/" class="btn btn-gold rv" style="--d:.4s">Explorar a maquete 3D
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SIMULADOR DE DESCONTO ============ -->
 <section class="sec dark" id="desconto">
   <div class="wrap sim">
@@ -589,6 +638,7 @@ footer b{color:var(--on-dark)}
     </div>
     <div class="bar rv"><i id="soldBar"></i></div>
     <div class="bar-l"><span id="soldPct">—</span><span id="soldTot">—</span></div>
+    <a href="maquete/" class="stock-3d">Ver as unidades disponíveis na maquete 3D →</a>
 
     <div class="amen">
       <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3 9.5v5M21 9.5v5M6.5 12h11"/></svg><div><h4>Academia no térreo</h4><p>Treino a poucos passos de casa.</p></div></div>
