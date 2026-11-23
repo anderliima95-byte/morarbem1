@@ -512,8 +512,10 @@ function buildSurroundings() {
   const inSite = p => { const c = sitePts.reduce((a, b) => a.clone().add(b)).multiplyScalar(.25); const P = sitePts.map(q => q.clone().add(q.clone().sub(c).normalize().multiplyScalar(8))); let inside = false; for (let i = 0, j = 3; i < 4; j = i++) { if (((P[i].y > p.y) !== (P[j].y > p.y)) && (p.x < (P[j].x - P[i].x) * (p.y - P[i].y) / (P[j].y - P[i].y) + P[i].x)) inside = !inside; } return inside; };
   const church = new THREE.Vector2(36, -58);
   const placed = [], houses = [];
+  // distância até o contorno do terreno: nada do entorno pode encostar nos blocos
+  const distToSite = p => { let m = Infinity; for (let i = 0; i < 4; i++) { const a = sitePts[i], b = sitePts[(i + 1) % 4], ab = b.clone().sub(a), t = clamp(p.clone().sub(a).dot(ab) / ab.lengthSq(), 0, 1); m = Math.min(m, p.distanceTo(a.clone().add(ab.multiplyScalar(t)))); } return m; };
   const ok = (p, r) => {
-    if (inSite(p) || p.distanceTo(church) < 16) return false;
+    if (inSite(p) || distToSite(p) < r + 10 || p.distanceTo(church) < 16) return false;
     for (const s of STREETS) if (distToStreet(p, s) < s.half + r * .7) return false;
     for (const q of placed) if (q.p.distanceTo(p) < (q.r + r) * .8) return false;
     return true;
@@ -593,7 +595,7 @@ function buildSurroundings() {
     placed.push({ p, r: 2.2 }); trees.push({ p, s: 1.8 + rnd() * 2.8 });
   }
   // árvores nas calçadas
-  STREETS.forEach(s => { for (let t = 8; t < s.len; t += 13 + rnd() * 10) for (const sd of [1, -1]) { if (rnd() < .45) continue; const p = s.a.clone().add(s.d.clone().multiplyScalar(t)).add(s.n.clone().multiplyScalar(sd * (s.half - .9))); if (p.length() > maxR || p.length() < 75 || inSite(p) || txtSpots.some(q => q.distanceTo(p) < 22)) continue; trees.push({ p, s: 1.6 + rnd() * 1.4 }); } });
+  STREETS.forEach(s => { if (s === tv) return; for (let t = 8; t < s.len; t += 13 + rnd() * 10) for (const sd of [1, -1]) { if (rnd() < .45) continue; const p = s.a.clone().add(s.d.clone().multiplyScalar(t)).add(s.n.clone().multiplyScalar(sd * (s.half - .9))); if (p.length() > maxR || p.length() < 75 || inSite(p) || txtSpots.some(q => q.distanceTo(p) < 22)) continue; trees.push({ p, s: 1.6 + rnd() * 1.4 }); } });
   const tr = new THREE.InstancedMesh(new THREE.CylinderGeometry(.18, .28, 1, 5), palmMat.trunk, trees.length);
   const cr = new THREE.InstancedMesh(new THREE.IcosahedronGeometry(1, 0), new THREE.MeshStandardMaterial({ roughness: .9, flatShading: true }), trees.length);
   const tc = [0x5d8a3f, 0x4c7a35, 0x6e9a48, 0x3f6b30, 0x7aa352];
@@ -602,6 +604,23 @@ function buildSurroundings() {
     mtx.compose(V3(t.p, t.s * 1.75), new THREE.Quaternion().setFromAxisAngle(up, rnd() * 3), new THREE.Vector3(t.s * 1.15, t.s * (.85 + rnd() * .3), t.s * 1.15)); cr.setMatrixAt(i, mtx); cr.setColorAt(i, col.setHex(tc[i % tc.length]));
   });
   tr.castShadow = cr.castShadow = true; scene.add(tr, cr);
+  // árvores pequenas de copa redonda ao longo da Travessa Resistência (acesso principal)
+  const small = [];
+  const frontA = 340 - 6, frontB = 340 + 52; // trecho em frente ao condomínio (lado do terreno já tem palmeiras)
+  for (let t = 150; t < tv.len - 120; t += 8 + rnd() * 1.5) for (const sd of [1, -1]) {
+    if (sd === -1 && t > frontA && t < frontB) continue;
+    const p = tv.a.clone().add(tv.d.clone().multiplyScalar(t)).add(tv.n.clone().multiplyScalar(sd * (tv.half - 1.1)));
+    if (txtSpots.some(q => q.distanceTo(p) < 9) || STREETS.some(s => s !== tv && distToStreet(p, s) < s.half + 1)) continue;
+    small.push({ p, s: .9 + rnd() * .35 });
+  }
+  const st = new THREE.InstancedMesh(new THREE.CylinderGeometry(.09, .13, 1, 6), palmMat.trunk, small.length);
+  const sc = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 12, 9), new THREE.MeshStandardMaterial({ roughness: .85 }), small.length);
+  const scol = [0x5f9442, 0x6ea34c, 0x568a3c, 0x78ad52];
+  small.forEach((t, i) => {
+    mtx.compose(V3(t.p, 1.0 * t.s), new THREE.Quaternion(), new THREE.Vector3(1, 2.0 * t.s, 1)); st.setMatrixAt(i, mtx);
+    mtx.compose(V3(t.p, 2.75 * t.s), new THREE.Quaternion(), new THREE.Vector3(1.25 * t.s, 1.15 * t.s, 1.25 * t.s)); sc.setMatrixAt(i, mtx); sc.setColorAt(i, col.setHex(scol[i % scol.length]));
+  });
+  st.castShadow = sc.castShadow = true; scene.add(st, sc);
   // postes
   const lampPos = [];
   [tv, se].forEach(s => { const L = s === tv ? [300, 320, 340, 360, 380, 400] : [10, 32, 54, 76, 98, 120]; L.forEach(t => lampPos.push({ p: s.a.clone().add(s.d.clone().multiplyScalar(t)).add(s.n.clone().multiplyScalar(s === tv ? s.half - 1 : -(s.half - 1))) })); });
