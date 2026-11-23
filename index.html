@@ -1,0 +1,1084 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Morar Bem 1 | Anderson Lima, Corretor</title>
+<meta name="description" content="Estúdios e apartamentos no Morar Bem 1 a partir de R$ 159 mil, com descontos de até 5%. Faça sua simulação gratuita com o corretor Anderson Lima.">
+<meta property="og:title" content="Morar Bem 1: seu primeiro imóvel, seu próximo investimento">
+<meta property="og:description" content="Estúdios a partir de R$ 159 mil, financiamento Minha Casa Minha Vida, academia, farmácia e comércio no térreo. Simulação gratuita com o corretor Anderson Lima.">
+<meta property="og:image" content="img/fachada-esquina-2.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0c1626">
+<link rel="icon" type="image/jpeg" href="img/perfil.jpg">
+<link rel="apple-touch-icon" href="img/perfil.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/fachada-esquina-2.jpg">
+<style>
+:root{
+  --ink:#0c1626; --ink-2:#13223a; --ink-3:#1c2f4d;
+  --sand:#f6f2ec; --sand-2:#ede6db; --paper:#fffdf9;
+  --gold:#c9a46a; --gold-2:#e3c995; --gold-deep:#a8844a;
+  --text:#1b2433; --muted:#5d6676; --line:rgba(12,22,38,.12);
+  --on-dark:#f4efe6; --on-dark-muted:rgba(244,239,230,.68); --line-dark:rgba(244,239,230,.14);
+  --wa:#25d366; --ok:#2f8f5b; --err:#b4463a;
+  --display:"Bricolage Grotesque", "Manrope", system-ui, sans-serif;
+  --accent:"Instrument Serif", Georgia, serif;
+  --sans:"Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --r:18px; --r-sm:12px;
+  --ease:cubic-bezier(.2,.7,.1,1);
+  --wrap:1180px; --gut:clamp(16px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--text);background:var(--sand);line-height:1.6;font-size:16px;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut)}
+.eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-deep);display:inline-flex;align-items:center;gap:.7em}
+.eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+.dark .eyebrow{color:var(--gold)}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.02;font-optical-sizing:auto}
+h2{font-size:clamp(2.1rem,5vw,3.8rem);margin:.5em 0 .4em}
+h1 em,h2 em,h3 em{font-family:var(--accent);font-style:italic;font-weight:400;letter-spacing:-.01em;font-size:1.1em;line-height:.9;color:var(--gold-deep)}
+.dark h2 em,.hero h1 em{color:var(--gold-2)}
+.lead{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--muted);max-width:620px}
+.dark{background:var(--ink);color:var(--on-dark)}
+.dark .lead{color:var(--on-dark-muted)}
+section{position:relative}
+.sec{padding:clamp(72px,11vw,140px) 0}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;padding:1.05em 1.7em;border-radius:999px;font-weight:700;font-size:.98rem;letter-spacing:.01em;text-decoration:none;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s;position:relative;overflow:hidden;white-space:nowrap}
+.btn-gold{background:linear-gradient(135deg,var(--gold-2),var(--gold) 55%,var(--gold-deep));color:#1a1408;box-shadow:0 10px 30px -10px rgba(201,164,106,.7)}
+.btn-gold::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.55) 50%,transparent 70%);transform:translateX(-120%);animation:shine 4.5s 2s infinite}
+@keyframes shine{0%,70%{transform:translateX(-120%)}100%{transform:translateX(120%)}}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 40px -12px rgba(201,164,106,.85)}
+.btn-ghost{border:1px solid var(--line-dark);color:var(--on-dark)}
+.btn-ghost:hover{background:rgba(255,255,255,.06)}
+.btn-wa{background:var(--wa);color:#06331a}
+.btn svg{width:1.15em;height:1.15em;flex:none}
+
+/* Header */
+.top{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid transparent}
+.top.solid{background:rgba(12,22,38,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-color:var(--line-dark)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;color:var(--on-dark)}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none}
+.brand img{width:40px;height:40px;border-radius:50%;object-fit:cover;object-position:50% 30%;border:1px solid var(--gold)}
+.foot-brand{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.foot-brand img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:1px solid var(--gold)}
+.brand b{display:block;font-family:var(--display);font-weight:500;font-size:1.06rem;line-height:1.1}
+.brand small{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2)}
+.top .btn{padding:.7em 1.2em;font-size:.86rem}
+@media (max-width:560px){.top .btn span{display:none}.top .btn{padding:.7em}}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:flex-end;color:var(--on-dark);overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 50%;transform:scale(1.12);animation:kenburns 18s var(--ease) forwards}
+@keyframes kenburns{to{transform:scale(1)}}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,38,.55) 0%,rgba(12,22,38,.2) 28%,rgba(12,22,38,.8) 55%,rgba(12,22,38,.97) 100%),linear-gradient(90deg,rgba(12,22,38,.65),transparent 70%)}
+@media (max-width:700px){
+  .hero-bg{bottom:auto;height:62svh}
+  .hero-bg img{object-position:42% 50%}
+  .hero-bg::after{background:linear-gradient(180deg,rgba(12,22,38,.55) 0%,rgba(12,22,38,0) 25%,rgba(12,22,38,.35) 60%,var(--ink) 100%)}
+  body .hero .wrap{padding-top:44svh}
+  body .hero h1{font-size:2.3rem}
+  body .hero-stats b{font-size:1.25rem}
+  body .hero-stats div{padding-right:10px}body .hero-stats div+div{padding-left:10px}
+  body .hero-stats span{font-size:.62rem;letter-spacing:.06em}
+}
+.hero .wrap{position:relative;padding-top:120px;padding-bottom:clamp(40px,7vw,80px);width:100%}
+.badge{display:inline-flex;align-items:center;gap:.6em;border:1px solid rgba(227,201,149,.45);background:rgba(12,22,38,.45);backdrop-filter:blur(6px);padding:.5em 1em;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--gold-2)}
+.badge i{width:7px;height:7px;border-radius:50%;background:var(--gold-2);box-shadow:0 0 0 0 rgba(227,201,149,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(227,201,149,0)}100%{box-shadow:0 0 0 0 rgba(227,201,149,0)}}
+.hero h1{font-size:clamp(2.5rem,7.2vw,5.6rem);max-width:15ch;margin:.35em 0 .3em}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em}
+.hero h1 .w>span{display:inline-block;transform:translateY(105%);animation:rise 1s var(--ease) forwards}
+@keyframes rise{to{transform:none}}
+.hero p.sub{font-size:clamp(1.02rem,1.7vw,1.22rem);max-width:560px;color:var(--on-dark-muted);opacity:0;animation:fade 1s .9s forwards}
+.hero p.sub strong{color:var(--on-dark)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;opacity:0;animation:fade 1s 1.1s forwards}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(36px,6vw,64px);border-top:1px solid var(--line-dark);opacity:0;animation:fade 1s 1.3s forwards;max-width:720px}
+.hero-stats div{padding:18px 16px 0 0}
+.hero-stats div+div{padding-left:16px;border-left:1px solid var(--line-dark)}
+.hero-stats b{display:block;font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.5rem,3.2vw,2.3rem);color:var(--gold-2);line-height:1.1}
+.hero-stats span{font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--on-dark-muted);line-height:1.35;display:block;margin-bottom:6px}
+.scroll-cue{position:absolute;right:var(--gut);bottom:40px;width:1px;height:70px;background:var(--line-dark);overflow:hidden}
+.scroll-cue::after{content:"";position:absolute;left:0;top:-30px;width:1px;height:30px;background:var(--gold-2);animation:cue 2.2s infinite}
+@keyframes cue{to{top:100%}}
+@media (max-width:700px){.scroll-cue{display:none}}
+
+/* Marquee */
+.marquee{background:var(--ink-2);color:var(--gold-2);overflow:hidden;border-block:1px solid var(--line-dark);padding:16px 0}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marq 38s linear infinite;font-family:var(--accent);font-size:1.35rem;font-style:italic;white-space:nowrap}
+.marquee-track span{display:flex;align-items:center;gap:48px}
+.marquee-track span::after{content:"✦";font-style:normal;font-size:.7rem;color:var(--gold)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* Objeção */
+.obj-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.obj-cards{display:grid;gap:14px}
+.ocard{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 24px 24px 76px;position:relative;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.ocard:hover{transform:translateX(6px);box-shadow:0 18px 40px -24px rgba(12,22,38,.35)}
+.ocard .ic{position:absolute;left:22px;top:24px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:var(--gold-2)}
+.ocard .ic svg{width:18px;height:18px}
+.ocard h3{font-family:var(--sans);font-weight:700;font-size:1.04rem;margin-bottom:4px}
+.ocard p{color:var(--muted);font-size:.95rem}
+.myth{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:clamp(1.3rem,2.4vw,1.7rem);line-height:1.35;color:var(--muted);margin-top:26px;padding-left:18px;border-left:2px solid var(--gold)}
+.myth span{color:var(--ink)}
+.myth s{text-decoration-color:var(--gold);text-decoration-thickness:2px}
+@media (max-width:860px){.obj-grid{grid-template-columns:1fr}}
+
+/* Caminhos: morar x investir */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:48px}
+.path{position:relative;border-radius:var(--r);overflow:hidden;min-height:560px;display:flex;align-items:flex-end;color:var(--on-dark);isolation:isolate}
+.path img{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;z-index:-2;will-change:transform}
+.path::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,22,38,.1),rgba(12,22,38,.55) 45%,rgba(12,22,38,.96));z-index:-1}
+.path-body{padding:clamp(24px,3.5vw,40px)}
+.path .tag{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--gold-2)}
+.path h3{font-size:clamp(1.8rem,3.2vw,2.5rem);margin:.3em 0 .5em}
+.path ul{list-style:none;display:grid;gap:10px;margin-bottom:24px}
+.path li{display:flex;gap:10px;font-size:.97rem;color:rgba(244,239,230,.86)}
+.path li::before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:rgba(227,201,149,.18) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3c995' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/11px no-repeat}
+.path .btn{padding:.85em 1.4em;font-size:.9rem}
+@media (max-width:860px){.paths{grid-template-columns:1fr}.path{min-height:520px}}
+
+/* Galeria */
+.gal-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.gal-nav{display:flex;gap:10px}
+.gal-nav button{width:50px;height:50px;border-radius:50%;border:1px solid var(--line-dark);display:grid;place-items:center;transition:background .3s,border-color .3s}
+.gal-nav button:hover{background:rgba(255,255,255,.08);border-color:var(--gold)}
+.gal-nav svg{width:20px;height:20px}
+.gallery{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:40px var(--gut) 8px;margin-top:8px;scrollbar-width:none;cursor:grab}
+.gallery::-webkit-scrollbar{display:none}
+.gallery.drag{cursor:grabbing;scroll-snap-type:none}
+.gallery figure{flex:0 0 auto;width:min(78vw,620px);scroll-snap-align:center;border-radius:var(--r);overflow:hidden;position:relative;background:var(--ink-2)}
+.gallery figure.tall{width:min(62vw,380px)}
+.gallery img{width:100%;height:clamp(300px,46vw,440px);object-fit:cover;transition:transform 1.2s var(--ease);pointer-events:none;user-select:none}
+.gallery figure:hover img{transform:scale(1.05)}
+.gallery figcaption{position:absolute;left:16px;bottom:16px;font-size:.8rem;font-weight:600;background:rgba(12,22,38,.7);backdrop-filter:blur(6px);padding:.45em .9em;border-radius:999px}
+.gal-note{font-size:.78rem;color:var(--on-dark-muted);margin-top:14px}
+
+/* Tipologias */
+.tabs{display:inline-flex;background:var(--sand-2);border-radius:999px;padding:5px;margin:28px 0 36px;position:relative}
+.tabs button{position:relative;z-index:1;padding:.75em 1.4em;border-radius:999px;font-weight:700;font-size:.92rem;color:var(--muted);transition:color .3s}
+.tabs button[aria-selected="true"]{color:var(--on-dark)}
+.tabs .pill{position:absolute;top:5px;bottom:5px;left:5px;border-radius:999px;background:var(--ink);transition:left .45s var(--ease),width .45s var(--ease);z-index:0}
+.tipo{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(28px,5vw,70px);align-items:start}
+.tipo[hidden]{display:none}
+.plans{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin}
+.plans button{flex:0 0 auto;width:min(72vw,300px);scroll-snap-align:start;border-radius:var(--r-sm);overflow:hidden;border:1px solid var(--line);background:#fff;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
+.plans button:hover{transform:translateY(-4px);box-shadow:0 18px 36px -22px rgba(12,22,38,.4)}
+.plans img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:top}
+.tipo-info h3{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:.4em}
+.price-from{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:6px 0 22px}
+.price-from small{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.price-from b{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(2.2rem,4.4vw,3.2rem);color:var(--ink);line-height:1}
+.specs{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);margin-bottom:24px}
+.specs div{padding:14px 0;border-bottom:1px solid var(--line)}
+.specs div:nth-child(odd){padding-right:14px}
+.specs dt{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.specs dd{font-weight:600;font-size:1.02rem}
+.ideal{background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--r-sm);padding:16px 18px;font-size:.95rem;color:var(--muted);margin-bottom:24px}
+.ideal b{color:var(--text)}
+@media (max-width:860px){.tipo{grid-template-columns:1fr}}
+
+/* Simulador de desconto */
+.sim{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,70px);align-items:center}
+.sim-card{background:linear-gradient(160deg,var(--ink-3),var(--ink));border:1px solid var(--line-dark);border-radius:24px;padding:clamp(22px,3.5vw,38px);box-shadow:0 40px 80px -40px rgba(0,0,0,.6)}
+.field-l{display:block;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--on-dark-muted);margin-bottom:10px}
+.sim-card select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.06) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e3c995' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right 14px center/18px no-repeat;border:1px solid var(--line-dark);color:var(--on-dark);border-radius:var(--r-sm);padding:14px 44px 14px 16px;font:inherit;font-weight:600}
+.sim-card select option{color:#111}
+.range-wrap{margin-top:26px}
+.range-top{display:flex;justify-content:space-between;align-items:baseline}
+.range-top output{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:1.7rem;color:var(--gold-2)}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--gold) var(--p,30%),rgba(255,255,255,.14) var(--p,30%));margin:14px 0 6px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--gold-2);border:4px solid var(--ink);box-shadow:0 0 0 2px var(--gold);cursor:pointer;transition:transform .2s}
+input[type=range]::-webkit-slider-thumb:active{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--gold-2);border:4px solid var(--ink);box-shadow:0 0 0 2px var(--gold);cursor:pointer}
+.tiers{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:14px}
+.tiers span{text-align:center;font-size:.72rem;padding:7px 0;border-radius:8px;background:rgba(255,255,255,.05);color:var(--on-dark-muted);font-weight:700;transition:background .35s,color .35s,transform .35s var(--ease)}
+.tiers span.on{background:var(--gold);color:#1a1408;transform:translateY(-3px)}
+.sim-out{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px}
+.sim-out div{background:rgba(255,255,255,.04);border:1px solid var(--line-dark);border-radius:var(--r-sm);padding:14px 16px}
+.sim-out small{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-dark-muted);font-weight:700}
+.sim-out b{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(1.25rem,2.4vw,1.6rem)}
+.sim-out .full{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.sim-out .hl{grid-column:1/-1;background:rgba(201,164,106,.12);border-color:rgba(201,164,106,.4)}
+.sim-out .hl b{color:var(--gold-2);font-size:clamp(1.6rem,3.2vw,2.2rem)}
+.sim-foot{font-size:.76rem;color:var(--on-dark-muted);margin-top:14px}
+@media (max-width:860px){.sim{grid-template-columns:1fr}}
+
+/* Escassez */
+.stock{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.stock .s{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.stock b{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:clamp(2.4rem,5vw,3.6rem);line-height:1;color:var(--ink)}
+.stock p{color:var(--muted);font-size:.95rem;margin-top:8px}
+.bar{height:10px;border-radius:10px;background:var(--sand-2);overflow:hidden;margin-top:28px}
+.bar i{display:block;height:100%;width:0;border-radius:10px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-2));transition:width 2s var(--ease)}
+.bar-l{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-top:8px;font-weight:600}
+.amen{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:56px}
+.amen div{background:var(--paper);padding:26px 22px;display:flex;gap:14px;align-items:flex-start}
+.amen svg{width:26px;height:26px;flex:none;color:var(--gold-deep)}
+.amen h4{font-size:1rem;margin-bottom:2px}
+.amen p{font-size:.88rem;color:var(--muted)}
+@media (max-width:860px){.stock{grid-template-columns:1fr;gap:10px}.stock .s{display:flex;align-items:center;gap:18px;padding:18px 22px}.stock .s b{min-width:2.2ch}.stock .s p{margin:0}.amen{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.amen{grid-template-columns:1fr}}
+
+/* Corretor */
+.broker{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.broker-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;max-height:640px}
+.broker-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.broker-photo.in img{transform:scale(1)}
+.broker-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(12,22,38,.85))}
+.broker-photo .sig{position:absolute;left:24px;bottom:22px;z-index:1;color:var(--on-dark)}
+.broker-photo .sig b{font-family:var(--display);font-weight:700;letter-spacing:-.03em;font-size:1.7rem;display:block;line-height:1.1}
+.broker-photo .sig span{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2)}
+.frame{position:absolute;inset:14px;border:1px solid rgba(227,201,149,.5);border-radius:16px;z-index:1;pointer-events:none}
+.steps{list-style:none;counter-reset:st;display:grid;gap:18px;margin:28px 0 32px}
+.steps li{counter-increment:st;display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+.steps li::before{content:counter(st,decimal-leading-zero);font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--gold);line-height:1.2}
+.steps b{display:block}
+.steps span{color:var(--on-dark-muted);font-size:.95rem}
+.socials{display:flex;gap:10px;flex-wrap:wrap}
+@media (max-width:860px){.broker{grid-template-columns:1fr}.broker-photo{max-height:520px}}
+
+/* Formulário */
+.form-sec{background:radial-gradient(1200px 600px at 85% -10%,rgba(201,164,106,.16),transparent 60%),var(--sand)}
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,6vw,80px);align-items:start}
+.why{display:grid;gap:14px;margin-top:28px}
+.why div{display:flex;gap:12px;align-items:flex-start;font-size:.97rem}
+.why svg{width:22px;height:22px;flex:none;color:var(--gold-deep);margin-top:2px}
+.fcard{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:clamp(22px,3.5vw,40px);box-shadow:0 40px 80px -50px rgba(12,22,38,.45);position:relative;overflow:hidden}
+.prog{display:flex;gap:6px;margin-bottom:26px}
+.prog i{flex:1;height:4px;border-radius:4px;background:var(--sand-2);position:relative;overflow:hidden}
+.prog i::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease)}
+.prog i.on::after{transform:scaleX(1)}
+.fstep{display:none}
+.fstep.on{display:block;animation:stepIn .6s var(--ease)}
+@keyframes stepIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+.fstep h3{font-size:clamp(1.5rem,2.6vw,1.9rem);margin-bottom:6px}
+.fstep > p{color:var(--muted);font-size:.95rem;margin-bottom:22px}
+.q{margin-bottom:22px;border:0}
+.q legend,.q > label{display:block;font-weight:700;font-size:.95rem;margin-bottom:10px}
+.q legend small,.q > label small{font-weight:500;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips.two{display:grid;grid-template-columns:1fr 1fr}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:.7em 1.1em;border-radius:var(--r-sm);border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:.93rem;transition:border-color .25s,background .25s,transform .25s var(--ease),box-shadow .25s;text-align:center;cursor:pointer}
+.chip span:hover{border-color:var(--gold)}
+.chip input:checked + span{border-color:var(--ink);background:var(--ink);color:var(--on-dark);transform:translateY(-2px);box-shadow:0 10px 20px -12px rgba(12,22,38,.6)}
+.chip input:focus-visible + span{outline:2px solid var(--gold);outline-offset:2px}
+.chips.two .chip span{flex-direction:column;padding:1em;min-height:92px}
+.chips.two .chip em{font-style:normal;font-weight:500;font-size:.8rem;opacity:.7}
+.chips.two svg{width:24px;height:24px}
+.inp{width:100%;border:1.5px solid var(--line);background:#fff;border-radius:var(--r-sm);padding:15px 16px;font:inherit;font-size:1rem;transition:border-color .25s,box-shadow .25s}
+.inp:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,164,106,.18)}
+.inp.bad{border-color:var(--err)}
+.err{color:var(--err);font-size:.82rem;margin-top:6px;min-height:1em;display:block}
+.consent{display:flex;gap:10px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:6px 0 22px}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--ink);flex:none}
+.saved{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--ok);background:rgba(47,143,91,.1);padding:.4em .8em;border-radius:999px;margin-bottom:14px;animation:fade .6s var(--ease)}
+.saved svg{width:14px;height:14px}
+.factions{display:flex;gap:10px;align-items:center}
+.factions .btn{flex:1}
+.back{font-weight:700;color:var(--muted);padding:.9em 1em;font-size:.92rem}
+.btn[disabled]{opacity:.6;pointer-events:none}
+.secure{display:flex;align-items:center;gap:8px;justify-content:center;font-size:.78rem;color:var(--muted);margin-top:14px}
+.secure svg{width:14px;height:14px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.done{text-align:center;padding:12px 0}
+.check{width:84px;height:84px;margin:0 auto 18px}
+.check circle{stroke:var(--gold);stroke-width:2;fill:none;stroke-dasharray:240;stroke-dashoffset:240;animation:draw .9s var(--ease) forwards}
+.check path{stroke:var(--ink);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s .7s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.done p{color:var(--muted);margin:8px auto 22px;max-width:420px}
+@media (max-width:860px){.form-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq{max-width:820px;margin:40px auto 0}
+.faq details{border-bottom:1px solid var(--line-dark)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 44px 22px 0;font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:clamp(1.1rem,2vw,1.35rem);position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:6px;top:50%;width:14px;height:14px;margin-top:-7px;background:linear-gradient(var(--gold-2),var(--gold-2)) center/100% 1.5px no-repeat,linear-gradient(var(--gold-2),var(--gold-2)) center/1.5px 100% no-repeat;transition:transform .4s var(--ease)}
+.faq details[open] summary::after{transform:rotate(135deg)}
+.faq .ans{color:var(--on-dark-muted);padding:0 0 22px;max-width:680px;animation:fade .5s var(--ease)}
+
+/* Rodapé */
+footer{background:#08101c;color:var(--on-dark-muted);padding:56px 0 120px;font-size:.86rem}
+.foot{display:grid;grid-template-columns:1.2fr 1fr;gap:32px}
+footer b{color:var(--on-dark)}
+.legal{font-size:.74rem;line-height:1.6;margin-top:28px;padding-top:24px;border-top:1px solid var(--line-dark)}
+@media (max-width:760px){.foot{grid-template-columns:1fr}}
+
+/* Barra fixa mobile */
+.sticky{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:8px;transform:translateY(160%);transition:transform .6s var(--ease)}
+.sticky.show{transform:none}
+.sticky .btn{flex:1;padding:1em;box-shadow:0 18px 40px -12px rgba(0,0,0,.5)}
+.sticky .btn-wa{flex:0 0 56px;padding:0}
+@media (min-width:861px){.sticky{left:auto;right:24px;bottom:24px;width:auto}.sticky .btn-gold{display:none}.sticky .btn-wa{width:60px;height:60px;flex:none;border-radius:50%}}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(6,10,18,.94);display:none;align-items:center;justify-content:center;padding:20px}
+.lb.on{display:flex;animation:fade .35s}
+.lb img{max-width:100%;max-height:88vh;border-radius:12px;object-fit:contain}
+.lb button{position:absolute;top:16px;right:16px;width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:1.6rem;line-height:1}
+
+/* Reveal */
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+.rv-mask{clip-path:inset(0 0 100% 0);transition:clip-path 1.3s var(--ease)}
+.rv-mask.in{clip-path:inset(0 0 0 0)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}.rv-mask{clip-path:none}
+  .hero h1 .w>span{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ TOPO ============ -->
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Anderson Lima, Corretor de Imóveis">
+      <img src="img/perfil.jpg" alt="">
+      <span><b>Anderson Lima</b><small>Corretor de Imóveis</small></span>
+    </a>
+    <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener" data-msg="Olá, Anderson! Vi a página do Morar Bem 1 e quero mais informações.">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+      <span>Falar no WhatsApp</span>
+    </a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"><img src="img/fachada-esquina-2.jpg" alt="Fachada do Morar Bem 1 ao entardecer, com farmácia e academia no térreo"></div>
+  <div class="wrap">
+    <span class="badge"><i></i>Lançamento · Financiamento Minha Casa Minha Vida</span>
+    <h1 class="js-split">Seu primeiro imóvel. Seu próximo <em>investimento.</em></h1>
+    <p class="sub">Estúdios e apartamentos no <strong>Morar Bem 1</strong> a partir de <strong class="js-min-studio">R$ 159 mil</strong>, com academia, farmácia e comércio no térreo. Financiamento pelo <strong>Minha Casa Minha Vida</strong>, da Caixa.</p>
+    <div class="ctas">
+      <a href="#simular" class="btn btn-gold">Fazer minha simulação gratuita
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a href="#galeria" class="btn btn-ghost">Ver o empreendimento</a>
+    </div>
+    <div class="hero-stats">
+      <div><span>Estúdios a partir de</span><b class="js-min-studio-short">R$ 159 mil</b></div>
+      <div><span>Desconto progressivo</span><b>até 5%</b></div>
+      <div><span>Entregas a partir de</span><b>Mar/2028</b></div>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"></div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Academia no térreo</span><span>Farmácia</span><span>Ponto comercial</span><span>Playground</span><span>Estacionamento</span><span>Garagem pronta para carro elétrico</span><span>Minha Casa Minha Vida</span><span>Estúdios e apartamentos de 2 quartos</span>
+    <span>Academia no térreo</span><span>Farmácia</span><span>Ponto comercial</span><span>Playground</span><span>Estacionamento</span><span>Garagem pronta para carro elétrico</span><span>Minha Casa Minha Vida</span><span>Estúdios e apartamentos de 2 quartos</span>
+  </div>
+</div>
+
+<!-- ============ QUEBRA DE OBJEÇÃO ============ -->
+<section class="sec">
+  <div class="wrap obj-grid">
+    <div>
+      <span class="eyebrow rv">Por que o Morar Bem 1</span>
+      <h2 class="rv" style="--d:.1s">Acessível de verdade. <em>Do jeito certo.</em></h2>
+      <p class="lead rv" style="--d:.2s">Preço de lançamento, desconto progressivo e financiamento pelo Minha Casa Minha Vida. O Morar Bem 1 foi pensado para quem quer dar o primeiro passo com segurança e planejamento.</p>
+      <p class="myth rv" style="--d:.3s">Escolha a sua unidade hoje.<br>Pague enquanto a obra avança.<br><span>Receba as chaves a partir de 2028.</span></p>
+    </div>
+    <div class="obj-cards">
+      <div class="ocard rv" style="--d:.1s">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <h3>Preço de lançamento</h3>
+        <p>Estúdios a partir de <b class="js-min-studio">R$ 159 mil</b>. Na planta, você garante o preço de lançamento antes de a obra ficar pronta.</p>
+      </div>
+      <div class="ocard rv" style="--d:.2s">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z"/></svg></span>
+        <h3>Desconto que cresce com a sua entrada</h3>
+        <p>De 1% a 5% de desconto, podendo chegar a quase R$ 15 mil. Você escolhe a entrada que faz sentido para o seu momento.</p>
+      </div>
+      <div class="ocard rv" style="--d:.3s">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+        <h3>Minha Casa Minha Vida</h3>
+        <p>Financiamento pela Caixa, com as vantagens do programa: juros reduzidos, uso do FGTS e, conforme a renda, subsídio do governo.</p>
+      </div>
+      <div class="ocard rv" style="--d:.4s">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+        <h3>Simulação feita para você</h3>
+        <p>Com base no seu perfil, o Anderson apresenta as unidades e o plano de pagamento ideais para você morar ou investir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MORAR x INVESTIR ============ -->
+<section class="sec dark" id="perfil">
+  <div class="wrap">
+    <span class="eyebrow rv">Dois caminhos, um endereço</span>
+    <h2 class="rv" style="--d:.1s">Para quem quer <em>morar.</em> Para quem quer <em>render.</em></h2>
+    <p class="lead rv" style="--d:.2s">O térreo comercial faz do Morar Bem 1 um prédio movimentado o dia todo: conveniência para quem mora e demanda para quem aluga.</p>
+    <div class="paths">
+      <article class="path rv" style="--d:.1s">
+        <img class="js-par" src="img/sala.jpg" alt="Sala decorada de apartamento do Morar Bem 1" loading="lazy">
+        <div class="path-body">
+          <span class="tag">Primeiro imóvel</span>
+          <h3>Sair do aluguel e morar no que é seu.</h3>
+          <ul>
+            <li>Apartamentos de 2 quartos com suíte, ou estúdios compactos e funcionais</li>
+            <li>Academia, farmácia e comércio no térreo: resolve o dia a dia sem tirar o carro</li>
+            <li>Playground e estacionamento dentro do residencial</li>
+            <li>Financiamento pelo Minha Casa Minha Vida, com uso do FGTS</li>
+            <li>Garagem com estrutura pronta para carro elétrico*</li>
+          </ul>
+          <a href="#simular" class="btn btn-gold js-pick" data-goal="Morar">Quero morar</a>
+        </div>
+      </article>
+      <article class="path rv" style="--d:.2s">
+        <img class="js-par" src="img/fachada-resistencia-2.jpg" alt="Fachada com academia no térreo" loading="lazy">
+        <div class="path-body">
+          <span class="tag">Investimento</span>
+          <h3>Fazer o seu dinheiro trabalhar por você.</h3>
+          <ul>
+            <li>Estúdios com valor de entrada menor, o perfil de imóvel mais procurado para aluguel</li>
+            <li>Academia, farmácia e ponto comercial trazem movimento para a porta do prédio</li>
+            <li>Compra na planta, com preço de lançamento, pagando durante a obra</li>
+            <li>Imóvel é patrimônio: diversifica sua renda com algo que você pode ver e usar</li>
+          </ul>
+          <a href="#simular" class="btn btn-gold js-pick" data-goal="Investir">Quero investir</a>
+        </div>
+      </article>
+    </div>
+    <p class="gal-note" style="margin-top:18px">*Estrutura pronta; carregador não incluso.</p>
+  </div>
+</section>
+
+<!-- ============ GALERIA ============ -->
+<section class="sec dark" id="galeria" style="padding-top:0">
+  <div class="wrap gal-head">
+    <div>
+      <span class="eyebrow rv">Galeria</span>
+      <h2 class="rv" style="--d:.1s">Cada detalhe pensado para <em>morar bem.</em></h2>
+    </div>
+    <div class="gal-nav rv" style="--d:.2s">
+      <button class="js-gprev" aria-label="Imagem anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button class="js-gnext" aria-label="Próxima imagem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="gallery js-gal" tabindex="0" aria-label="Galeria de imagens, arraste para o lado">
+    <figure><img src="img/fachada-esquina.jpg" alt="Fachada de esquina" loading="lazy"><figcaption>Fachada</figcaption></figure>
+    <figure><img src="img/sala.jpg" alt="Sala decorada" loading="lazy"><figcaption>Sala decorada</figcaption></figure>
+    <figure><img src="img/suite.jpg" alt="Suíte decorada" loading="lazy"><figcaption>Suíte</figcaption></figure>
+    <figure><img src="img/fachada-resistencia-3.jpg" alt="Academia e farmácia no térreo" loading="lazy"><figcaption>Academia e farmácia no térreo</figcaption></figure>
+    <figure><img src="img/playground-2.jpg" alt="Playground e circulação interna" loading="lazy"><figcaption>Playground</figcaption></figure>
+    <figure><img src="img/playground-1.jpg" alt="Estacionamento interno" loading="lazy"><figcaption>Estacionamento</figcaption></figure>
+    <figure><img src="img/vista-superior.jpg" alt="Vista superior do residencial" loading="lazy"><figcaption>Vista superior</figcaption></figure>
+    <figure><img src="img/fachada-resistencia-1.jpg" alt="Fachada lateral" loading="lazy"><figcaption>Fachada lateral</figcaption></figure>
+  </div>
+  <div class="wrap"><p class="gal-note">Imagens ilustrativas. Toque para ampliar.</p></div>
+</section>
+
+<!-- ============ TIPOLOGIAS ============ -->
+<section class="sec" id="plantas">
+  <div class="wrap">
+    <span class="eyebrow rv">Plantas</span>
+    <h2 class="rv" style="--d:.1s">Escolha o tamanho do <em>seu próximo passo.</em></h2>
+    <div class="tabs rv" style="--d:.2s" role="tablist">
+      <span class="pill" aria-hidden="true"></span>
+      <button role="tab" aria-selected="true" data-tab="estudio">Estúdios</button>
+      <button role="tab" aria-selected="false" data-tab="apto">Apartamentos 2 quartos</button>
+    </div>
+
+    <div class="tipo" data-panel="estudio">
+      <div class="plans">
+        <button class="js-zoom" data-src="img/planta-estudio-2.jpg"><img src="img/planta-estudio-2.jpg" alt="Planta do estúdio de 32,63 m²" loading="lazy"></button>
+        <button class="js-zoom" data-src="img/planta-estudio-3.jpg"><img src="img/planta-estudio-3.jpg" alt="Planta do estúdio de 39,15 m²" loading="lazy"></button>
+        <button class="js-zoom" data-src="img/planta-estudio.jpg"><img src="img/planta-estudio.jpg" alt="Planta do estúdio de 27,67 m²" loading="lazy"></button>
+      </div>
+      <div class="tipo-info">
+        <h3>Estúdio</h3>
+        <div class="price-from"><small>A partir de</small><b class="js-min-studio">R$ 159 mil</b></div>
+        <dl class="specs">
+          <div><dt>Área</dt><dd class="js-studio-area">30 a 39 m²</dd></div>
+          <div><dt>Disponíveis</dt><dd class="js-studio-left">—</dd></div>
+          <div><dt>Ambientes</dt><dd>Estar, cozinha, dormitório, banheiro e serviço</dd></div>
+          <div><dt>Garagem</dt><dd>Vaga avulsa opcional (13,5 m²)</dd></div>
+        </dl>
+        <p class="ideal"><b>Ideal para:</b> quem vai morar sozinho ou a dois, e para quem quer começar a investir em imóveis com um valor de entrada mais acessível.</p>
+        <a href="#simular" class="btn btn-gold">Simular um estúdio</a>
+      </div>
+    </div>
+
+    <div class="tipo" data-panel="apto" hidden>
+      <div class="plans">
+        <button class="js-zoom" data-src="img/planta-apto-a.jpg"><img src="img/planta-apto-a.jpg" alt="Planta do apartamento de 2 quartos com suíte" loading="lazy"></button>
+        <button class="js-zoom" data-src="img/planta-apto-b.jpg"><img src="img/planta-apto-b.jpg" alt="Planta do apartamento de 2 quartos" loading="lazy"></button>
+        <button class="js-zoom" data-src="img/layout-apto.jpg"><img src="img/layout-apto.jpg" alt="Layout humanizado do apartamento" loading="lazy"></button>
+      </div>
+      <div class="tipo-info">
+        <h3>Apartamento 2 quartos</h3>
+        <div class="price-from"><small>A partir de</small><b class="js-min-apto">R$ 287 mil</b></div>
+        <dl class="specs">
+          <div><dt>Área</dt><dd>54 a 55 m² <small>(68 m² com garagem)</small></dd></div>
+          <div><dt>Disponíveis</dt><dd class="js-apto-left">—</dd></div>
+          <div><dt>Ambientes</dt><dd>Sala, cozinha, 2 quartos (opção com suíte), serviço</dd></div>
+          <div><dt>Garagem</dt><dd>Inclusa, com estrutura para carro elétrico*</dd></div>
+        </dl>
+        <p class="ideal"><b>Ideal para:</b> famílias e casais que querem espaço para crescer, com garagem já inclusa.</p>
+        <a href="#simular" class="btn btn-gold">Simular um apartamento</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIMULADOR DE DESCONTO ============ -->
+<section class="sec dark" id="desconto">
+  <div class="wrap sim">
+    <div>
+      <span class="eyebrow rv">Desconto progressivo</span>
+      <h2 class="rv" style="--d:.1s">Quanto maior a entrada, <em>maior o desconto.</em></h2>
+      <p class="lead rv" style="--d:.2s">Escolha uma unidade disponível e arraste para ver quanto você economiza com a condição especial de lançamento. É uma prévia: a simulação completa, com entrada e parcelas, o Anderson monta para o seu perfil.</p>
+      <div class="rv" style="--d:.3s;margin-top:28px"><a href="#simular" class="btn btn-gold">Quero minha simulação completa</a></div>
+    </div>
+    <div class="sim-card rv" style="--d:.15s">
+      <label class="field-l" for="simUnit">Unidade</label>
+      <select id="simUnit"></select>
+      <div class="range-wrap">
+        <div class="range-top"><span class="field-l" style="margin:0">Sua entrada</span><output id="simEntOut">R$ 40.000</output></div>
+        <input type="range" id="simEnt" min="10000" max="150000" step="1000" value="40000" aria-label="Valor da entrada">
+        <div class="tiers" id="simTiers"><span>0%</span><span>1%</span><span>2%</span><span>3%</span><span>4%</span><span>5%</span></div>
+      </div>
+      <div class="sim-out">
+        <div><small>Valor de tabela</small><b id="simPrice">—</b></div>
+        <div><small>Desconto</small><b id="simPct">—</b></div>
+        <div class="hl"><small>Você economiza</small><b id="simSave">—</b></div>
+        <div><small>Valor com desconto</small><b id="simFinal">—</b></div>
+        <div><small>Saldo após a entrada</small><b id="simRest">—</b></div>
+        <div class="full"><small>Entrega prevista</small><b id="simEtapa">—</b></div>
+      </div>
+      <p class="sim-foot">Faixas de entrada: até R$ 20 mil 0%; R$ 21–40 mil 1%; R$ 41–60 mil 2%; R$ 61–80 mil 3%; R$ 81–100 mil 4%; R$ 101 mil ou mais 5%. Condição especial de lançamento, sujeita à disponibilidade e à confirmação da construtora.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESCASSEZ + DIFERENCIAIS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow rv">Disponibilidade</span>
+    <h2 class="rv" style="--d:.1s">As melhores unidades <em>saem primeiro.</em></h2>
+    <p class="lead rv" style="--d:.2s">Em lançamento, quem chega antes escolhe andar, posição e paga o menor preço. Veja como estão as vendas hoje:</p>
+    <div class="stock">
+      <div class="s rv" style="--d:.1s"><b class="js-count" data-key="sold">0</b><p>unidades já vendidas</p></div>
+      <div class="s rv" style="--d:.2s"><b class="js-count" data-key="studioLeft">0</b><p>estúdios ainda disponíveis</p></div>
+      <div class="s rv" style="--d:.3s"><b class="js-count" data-key="aptoLeft">0</b><p>apartamentos de 2 quartos disponíveis</p></div>
+    </div>
+    <div class="bar rv"><i id="soldBar"></i></div>
+    <div class="bar-l"><span id="soldPct">—</span><span id="soldTot">—</span></div>
+
+    <div class="amen">
+      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6.5 6.5v11M17.5 6.5v11M3 9.5v5M21 9.5v5M6.5 12h11"/></svg><div><h4>Academia no térreo</h4><p>Treino a poucos passos de casa.</p></div></div>
+      <div class="rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 8v8M8 12h8"/></svg><div><h4>Farmácia</h4><p>Conveniência no seu próprio prédio.</p></div></div>
+      <div class="rv" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 9l1.5-5h15L21 9M3 9h18v11H3zM9 20v-6h6v6"/></svg><div><h4>Ponto comercial</h4><p>Serviços e movimento na porta.</p></div></div>
+      <div class="rv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="5" r="2"/><path d="M4 21l4-9h8l4 9M9 12l-1-4h8l-1 4"/></svg><div><h4>Playground</h4><p>Espaço seguro para as crianças.</p></div></div>
+      <div class="rv" style="--d:.08s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 17h14M6 17l1.5-6h9L18 17M7 17v2M17 17v2"/><circle cx="8.5" cy="14" r=".6"/><circle cx="15.5" cy="14" r=".6"/></svg><div><h4>Estacionamento</h4><p>Vagas dentro do residencial.</p></div></div>
+      <div class="rv" style="--d:.16s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg><div><h4>Pronto para carro elétrico</h4><p>Estrutura instalada na garagem*.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CORRETOR ============ -->
+<section class="sec dark" id="corretor">
+  <div class="wrap broker">
+    <div class="broker-photo rv js-bphoto">
+      <img src="img/corretor-destaque.jpg" alt="Anderson Lima, corretor de imóveis" loading="lazy">
+      <span class="frame"></span>
+      <div class="sig"><b>Anderson Lima</b><span>Corretor de imóveis<span class="js-creci"></span></span></div>
+    </div>
+    <div>
+      <span class="eyebrow rv">Quem vai te atender</span>
+      <h2 class="rv" style="--d:.1s">Você não compra sozinho. <em>Eu vou junto.</em></h2>
+      <p class="lead rv" style="--d:.2s">Sou o Anderson Lima, corretor do Morar Bem 1. Meu trabalho é encontrar a unidade e a forma de pagamento ideais para o seu momento, com transparência do primeiro contato até a entrega das chaves.</p>
+      <ol class="steps">
+        <li class="rv" style="--d:.1s"><div><b>Você me conta o seu objetivo</b><span>Morar ou investir. Leva 1 minuto, no formulário abaixo.</span></div></li>
+        <li class="rv" style="--d:.2s"><div><b>Eu monto a sua simulação</b><span>Unidades, entrada, desconto e parcelas que fazem sentido para você.</span></div></li>
+        <li class="rv" style="--d:.3s"><div><b>Te acompanho até a assinatura</b><span>Tiro todas as dúvidas pelo WhatsApp, do primeiro contato às chaves.</span></div></li>
+      </ol>
+      <div class="socials rv" style="--d:.4s">
+        <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener" data-msg="Olá, Anderson! Vi a página do Morar Bem 1 e quero conversar.">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+          <span class="js-wa-num">(93) 98130-7082</span></a>
+        <a class="btn btn-ghost js-ig" href="#" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+          <span class="js-ig-txt">@andersonlima.imoveis</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORMULÁRIO ============ -->
+<section class="sec form-sec" id="simular">
+  <div class="wrap form-grid">
+    <div>
+      <span class="eyebrow rv">Simulação gratuita</span>
+      <h2 class="rv" style="--d:.1s">Faça sua simulação <em>gratuita.</em></h2>
+      <p class="lead rv" style="--d:.2s">Responda 3 perguntas rápidas e receba no seu WhatsApp as unidades e a condição de pagamento ideais para o seu perfil.</p>
+      <div class="why">
+        <div class="rv" style="--d:.25s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg><span><b>Sem compromisso:</b> você recebe a simulação e decide com calma.</span></div>
+        <div class="rv" style="--d:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg><span><b>Personalizada:</b> entrada, desconto e parcelas pensados para o seu planejamento.</span></div>
+        <div class="rv" style="--d:.35s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg><span><b>Resposta rápida</b> pelo WhatsApp, direto comigo.</span></div>
+      </div>
+    </div>
+
+    <div class="fcard rv" style="--d:.1s">
+      <form id="leadForm" novalidate>
+        <div class="prog" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+
+        <!-- Passo 1 -->
+        <div class="fstep on" data-step="1">
+          <h3>Qual é o seu objetivo?</h3>
+          <p>Assim eu já separo as unidades certas para você.</p>
+          <fieldset class="q">
+            <legend class="sr-only" style="position:absolute;left:-9999px">Objetivo</legend>
+            <div class="chips two">
+              <label class="chip"><input type="radio" name="objetivo" value="Morar"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Morar<em>meu primeiro imóvel</em></span></label>
+              <label class="chip"><input type="radio" name="objetivo" value="Investir"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg>Investir<em>alugar ou valorizar</em></span></label>
+            </div>
+          </fieldset>
+          <span class="err" data-err="objetivo"></span>
+          <div class="factions"><button type="button" class="btn btn-gold js-next">Continuar</button></div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="fstep" data-step="2">
+          <h3>Qual é a sua renda familiar mensal?</h3>
+          <p>Com essa informação eu monto uma simulação realista para você. Pode somar a renda de quem vai comprar junto.</p>
+          <fieldset class="q">
+            <legend style="position:absolute;left:-9999px">Renda familiar mensal</legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="renda" value="Até R$ 3 mil"><span>Até R$ 3 mil</span></label>
+              <label class="chip"><input type="radio" name="renda" value="R$ 3 a 5 mil"><span>R$ 3 a 5 mil</span></label>
+              <label class="chip"><input type="radio" name="renda" value="R$ 5 a 8 mil"><span>R$ 5 a 8 mil</span></label>
+              <label class="chip"><input type="radio" name="renda" value="R$ 8 a 12 mil"><span>R$ 8 a 12 mil</span></label>
+              <label class="chip"><input type="radio" name="renda" value="Acima de R$ 12 mil"><span>Acima de R$ 12 mil</span></label>
+            </div>
+          </fieldset>
+          <span class="err" data-err="renda"></span>
+          <fieldset class="q">
+            <legend>Tem algum valor para dar de entrada? <small>(opcional)</small></legend>
+            <div class="chips">
+              <label class="chip"><input type="radio" name="entrada" value="Ainda não"><span>Ainda não</span></label>
+              <label class="chip"><input type="radio" name="entrada" value="Até R$ 20 mil"><span>Até R$ 20 mil</span></label>
+              <label class="chip"><input type="radio" name="entrada" value="R$ 20 a 60 mil"><span>R$ 20 a 60 mil</span></label>
+              <label class="chip"><input type="radio" name="entrada" value="Acima de R$ 60 mil"><span>Acima de R$ 60 mil</span></label>
+            </div>
+          </fieldset>
+          <div class="factions"><button type="button" class="back js-prev">Voltar</button><button type="button" class="btn btn-gold js-next">Continuar</button></div>
+        </div>
+
+        <!-- Passo 3 -->
+        <div class="fstep" data-step="3">
+          <h3>Para onde eu envio sua simulação?</h3>
+          <p>Eu te chamo no WhatsApp com as melhores opções para o seu perfil.</p>
+          <div class="q">
+            <label for="fNome">Seu nome</label>
+            <input class="inp" id="fNome" name="nome" autocomplete="name" placeholder="Como posso te chamar?">
+            <span class="err" data-err="nome"></span>
+          </div>
+          <div class="q">
+            <label for="fWa">WhatsApp com DDD</label>
+            <input class="inp" id="fWa" name="whatsapp" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="(00) 00000-0000">
+            <span class="err" data-err="whatsapp"></span>
+          </div>
+          <div class="hp" aria-hidden="true"><label>Não preencha <input name="website" tabindex="-1" autocomplete="off"></label></div>
+          <label class="consent"><input type="checkbox" name="consent" id="fConsent"><span>Autorizo o corretor Anderson Lima a entrar em contato pelo WhatsApp sobre o Morar Bem 1. Meus dados não serão compartilhados com terceiros.</span></label>
+          <span class="err" data-err="consent" style="margin-top:-16px;margin-bottom:12px"></span>
+          <div class="factions"><button type="button" class="back js-prev">Voltar</button><button type="submit" class="btn btn-gold" id="fSend">Quero minha simulação</button></div>
+          <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados ficam protegidos e só são usados para o seu atendimento.</p>
+        </div>
+
+        <!-- Passo 4: dados para a simulação na Caixa -->
+        <div class="fstep" data-step="4">
+          <span class="saved"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12l5 5L20 7"/></svg>Contato recebido</span>
+          <h3>Agilize sua simulação na Caixa</h3>
+          <p>Para simular o financiamento pelo Minha Casa Minha Vida, a Caixa pede o CPF e a data de nascimento de quem vai comprar. Com eles, eu já te envio os valores reais.</p>
+          <div class="q">
+            <label for="fCpf">CPF</label>
+            <input class="inp" id="fCpf" name="cpf" type="text" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00">
+            <span class="err" data-err="cpf"></span>
+          </div>
+          <div class="q">
+            <label for="fNasc">Data de nascimento</label>
+            <input class="inp" id="fNasc" name="nascimento" type="text" inputmode="numeric" autocomplete="bday" placeholder="dd/mm/aaaa">
+            <span class="err" data-err="nascimento"></span>
+          </div>
+          <label class="consent"><input type="checkbox" id="fConsent2"><span>Autorizo o uso do meu CPF e da minha data de nascimento exclusivamente para a simulação de financiamento do Morar Bem 1 junto à Caixa.</span></label>
+          <span class="err" data-err="consent2" style="margin-top:-16px;margin-bottom:12px"></span>
+          <div class="factions"><button type="button" class="back js-skip">Pular</button><button type="button" class="btn btn-gold" id="fSend2">Enviar para simulação</button></div>
+          <p class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Seus dados são usados só para a simulação e não são compartilhados com terceiros.</p>
+        </div>
+
+        <!-- Sucesso -->
+        <div class="fstep" data-step="5">
+          <div class="done">
+            <svg class="check" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="38"/><path d="M27 43l10 10 20-21"/></svg>
+            <h3>Pronto, <span id="doneName">tudo certo</span>!</h3>
+            <p id="doneTxt">Recebi seus dados e já vou preparar a sua simulação. Quer adiantar? Me chame agora no WhatsApp.</p>
+            <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>
+              Falar com o Anderson agora</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec dark">
+  <div class="wrap">
+    <div style="text-align:center">
+      <span class="eyebrow rv">Dúvidas frequentes</span>
+      <h2 class="rv" style="--d:.1s">Perguntas que <em>todo mundo</em> faz.</h2>
+    </div>
+    <div class="faq">
+      <details class="rv"><summary>Qual renda preciso para comprar?</summary><div class="ans">Depende da unidade escolhida, da entrada e da forma de pagamento. O Morar Bem 1 tem opções acessíveis justamente para quem está comprando o primeiro imóvel. Na simulação, eu mostro as alternativas ideais para o seu perfil.</div></details>
+      <details class="rv"><summary>Posso financiar pelo Minha Casa Minha Vida?</summary><div class="ans">Sim. O Morar Bem 1 é financiado pela Caixa dentro do programa Minha Casa Minha Vida. Conforme a sua renda e o seu perfil, você pode ter juros reduzidos, usar o FGTS e receber subsídio do governo. Na simulação, eu verifico em qual faixa você se encaixa.</div></details>
+      <details class="rv"><summary>Quanto preciso de entrada?</summary><div class="ans">Depende da unidade e do plano de pagamento. Existe condição para entradas menores, e quanto maior a entrada, maior o desconto: de 1% (a partir de R$ 21 mil) até 5% (a partir de R$ 101 mil).</div></details>
+      <details class="rv"><summary>Quando o empreendimento fica pronto?</summary><div class="ans">O Morar Bem 1 será entregue em duas etapas: a 1ª etapa (blocos A, B, C e D) com entrega prevista para março de 2028, e a 2ª etapa (blocos E, F, G e H) para março de 2029. Durante a obra você vai pagando conforme a condição comercial.</div></details>
+      <details class="rv"><summary>Os estúdios têm garagem?</summary><div class="ans">Os apartamentos de 2 quartos já incluem garagem. Para os estúdios existem vagas avulsas de 13,5 m², vendidas à parte. Pergunte a disponibilidade.</div></details>
+      <details class="rv"><summary>Vale a pena comprar para alugar?</summary><div class="ans">Estúdios compactos em prédios com comércio no térreo costumam ter boa procura para locação. Na simulação, eu te mostro os números da unidade e conversamos sobre o seu objetivo, sem promessa de rentabilidade.</div></details>
+      <details class="rv"><summary>Quem é a construtora?</summary><div class="ans">O Morar Bem 1 é uma realização da 3A Empreendimentos. Eu sou corretor e faço todo o seu atendimento, da simulação à assinatura.</div></details>
+    </div>
+    <div style="text-align:center;margin-top:48px" class="rv"><a href="#simular" class="btn btn-gold">Fazer minha simulação gratuita</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="foot-brand"><img src="img/perfil.jpg" alt="Anderson Lima" loading="lazy"><div><b style="font-family:var(--display);font-size:1.4rem;font-weight:700;letter-spacing:-.03em">Anderson Lima</b>
+        <p>Corretor de Imóveis<span class="js-creci"></span></p></div></div>
+        <p style="margin-top:10px">WhatsApp <span class="js-wa-num">(93) 98130-7082</span> · <span class="js-ig-txt">@andersonlima.imoveis</span></p>
+      </div>
+      <div>
+        <b>Morar Bem 1 Residencial</b>
+        <p>Realização: 3A Empreendimentos</p>
+      </div>
+    </div>
+    <p class="legal">Material de divulgação produzido pelo corretor Anderson Lima. Imagens meramente ilustrativas; mobiliário, equipamentos e revestimentos não fazem parte do contrato. Valores conforme tabela de <span class="js-table-date">novembro/2026</span>, sujeitos a alteração e à disponibilidade sem aviso prévio. Condições de desconto válidas para as unidades da campanha de lançamento, sujeitas à confirmação da construtora. Financiamento sujeito à análise de crédito e às regras do programa Minha Casa Minha Vida/Caixa. Entregas previstas: 1ª etapa (blocos A–D) em março de 2028 e 2ª etapa (blocos E–H) em março de 2029.</p>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky">
+  <a href="#simular" class="btn btn-gold">Fazer simulação gratuita</a>
+  <a href="#" class="btn btn-wa js-wa" target="_blank" rel="noopener" aria-label="Falar no WhatsApp" data-msg="Olá, Anderson! Vi a página do Morar Bem 1 e quero mais informações.">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:26px;height:26px"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg></a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada"><button aria-label="Fechar">×</button><img alt=""></div>
+
+<script src="unidades.js"></script>
+<script>
+/* ================== CONFIGURAÇÃO (edite aqui) ================== */
+const CONFIG = {
+  // Link do App da Web do Google Apps Script (termina em /exec). Veja o arquivo COMO-CONECTAR-PLANILHA.md
+  SHEETS_URL: "https://script.google.com/macros/s/AKfycbz6QCwFMSySu6e3Q2QMZLMACFsKaD9Zh1wv74XlNm7IPYgutKZd_XeruWvqArvl0CU0Uw/exec",
+  WHATSAPP: "5593981307082",           // 55 + DDD + número, só dígitos
+  WHATSAPP_TXT: "(93) 98130-7082",
+  INSTAGRAM: "andersonlima.imoveis",
+  CRECI: "CRECI 13.950",                // obrigatório em anúncios
+  TABELA: "novembro/2026"
+};
+/* =============================================================== */
+
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const brl = n => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const brl2 = n => n.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const waLink = msg => `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(msg)}`;
+
+/* ---------- Dados do contato ---------- */
+$$(".js-wa").forEach(a => a.href = waLink(a.dataset.msg || "Olá, Anderson!"));
+$$(".js-wa-num").forEach(s => s.textContent = CONFIG.WHATSAPP_TXT);
+$$(".js-ig").forEach(a => a.href = `https://instagram.com/${CONFIG.INSTAGRAM}`);
+$$(".js-ig-txt").forEach(s => s.textContent = "@" + CONFIG.INSTAGRAM);
+$$(".js-creci").forEach(s => s.textContent = CONFIG.CRECI ? " · " + CONFIG.CRECI : "");
+$$(".js-table-date").forEach(s => s.textContent = CONFIG.TABELA);
+
+/* ---------- Números a partir da tabela ---------- */
+const U = window.UNIDADES || [];
+const studios = U.filter(x => x.u[0] === "E"), aptos = U.filter(x => x.u[0] === "A");
+const avail = a => a.filter(x => !x.v);
+const stats = {
+  sold: U.filter(x => x.v).length, total: U.length,
+  studioLeft: avail(studios).length, aptoLeft: avail(aptos).length,
+  minStudio: Math.min(...avail(studios).map(x => x.p)), minApto: Math.min(...avail(aptos).map(x => x.p))
+};
+const milFloor = n => `R$ ${Math.floor(n / 1000)} mil`;
+$$(".js-min-studio,.js-min-studio-short").forEach(s => s.textContent = milFloor(stats.minStudio));
+$$(".js-min-apto").forEach(s => s.textContent = milFloor(stats.minApto));
+$(".js-studio-left").textContent = `${stats.studioLeft} unidades`;
+$(".js-apto-left").textContent = `${stats.aptoLeft} unidades`;
+const sa = avail(studios).map(x => x.m2);
+$(".js-studio-area").textContent = `${Math.floor(Math.min(...sa))} a ${Math.ceil(Math.max(...sa))} m²`;
+
+/* ---------- Título com animação palavra a palavra ---------- */
+$$(".js-split").forEach(h => {
+  let i = 0;
+  const walk = node => [...node.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.append(part); return; }
+        const w = document.createElement("span"); w.className = "w";
+        const s = document.createElement("span"); s.textContent = part;
+        s.style.animationDelay = (0.25 + i++ * 0.07) + "s";
+        w.append(s); frag.append(w);
+      });
+      n.replaceWith(frag);
+    } else walk(n);
+  });
+  walk(h);
+});
+
+/* ---------- Header e barra fixa ---------- */
+const header = $("#top"), sticky = $("#sticky"), hero = $("#inicio"), formSec = $("#simular");
+let formVisible = false;
+const onScroll = () => {
+  header.classList.toggle("solid", scrollY > 40);
+  sticky.classList.toggle("show", scrollY > hero.offsetHeight * 0.7 && !formVisible);
+};
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+new IntersectionObserver(([e]) => { formVisible = e.isIntersecting; onScroll(); }, { threshold: 0.15 }).observe(formSec);
+
+/* ---------- Reveal ao rolar + contadores ---------- */
+const countUp = el => {
+  const end = stats[el.dataset.key] || 0, dur = reduce ? 0 : 1600, t0 = performance.now();
+  const tick = t => { const p = Math.min(1, (t - t0) / (dur || 1)); el.textContent = Math.round(end * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+};
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add("in"); io.unobserve(e.target);
+  $$(".js-count", e.target).forEach(countUp);
+  if (e.target.classList.contains("bar")) $("#soldBar").style.width = (stats.sold / stats.total * 100).toFixed(1) + "%";
+}), { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+$$(".rv,.rv-mask,.js-bphoto,.stock .s").forEach(el => io.observe(el));
+$("#soldPct").textContent = `${Math.round(stats.sold / stats.total * 100)}% vendido`;
+$("#soldTot").textContent = `${stats.total} unidades no total`;
+
+/* ---------- Parallax suave ---------- */
+if (!reduce) {
+  const par = $$(".js-par");
+  const p = () => par.forEach(img => {
+    const r = img.parentElement.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    const k = (r.top + r.height / 2 - innerHeight / 2) / innerHeight;
+    img.style.transform = `translate3d(0,${(-9 + k * -8).toFixed(2)}%,0)`;
+  });
+  addEventListener("scroll", () => requestAnimationFrame(p), { passive: true }); p();
+}
+
+/* ---------- Galeria: arrastar + setas + lightbox ---------- */
+const gal = $(".js-gal");
+const step = () => (gal.querySelector("figure")?.offsetWidth || 400) + 16;
+$(".js-gnext").onclick = () => gal.scrollBy({ left: step(), behavior: "smooth" });
+$(".js-gprev").onclick = () => gal.scrollBy({ left: -step(), behavior: "smooth" });
+let down = false, sx = 0, sl = 0, moved = 0;
+gal.addEventListener("pointerdown", e => { if (e.pointerType !== "mouse") return; down = true; moved = 0; sx = e.clientX; sl = gal.scrollLeft; gal.classList.add("drag"); });
+addEventListener("pointermove", e => { if (!down) return; moved = Math.abs(e.clientX - sx); gal.scrollLeft = sl - (e.clientX - sx); });
+addEventListener("pointerup", () => { if (!down) return; down = false; gal.classList.remove("drag"); });
+const lb = $("#lb"), lbImg = $("#lb img");
+const openLb = (src, alt) => { lbImg.src = src; lbImg.alt = alt || ""; lb.classList.add("on"); document.body.style.overflow = "hidden"; };
+const closeLb = () => { lb.classList.remove("on"); document.body.style.overflow = ""; };
+gal.addEventListener("click", e => { const f = e.target.closest("figure"); if (f && moved < 6) { const i = $("img", f); openLb(i.src, i.alt); } });
+$$(".js-zoom").forEach(b => b.onclick = () => openLb(b.dataset.src, $("img", b).alt));
+lb.onclick = e => { if (e.target !== lbImg) closeLb(); };
+addEventListener("keydown", e => { if (e.key === "Escape") closeLb(); });
+
+/* ---------- Abas de tipologia ---------- */
+const tabs = $$(".tabs button"), pill = $(".tabs .pill");
+const movePill = b => { pill.style.left = b.offsetLeft + "px"; pill.style.width = b.offsetWidth + "px"; };
+tabs.forEach(b => b.onclick = () => {
+  tabs.forEach(t => t.setAttribute("aria-selected", t === b));
+  $$(".tipo").forEach(p => p.hidden = p.dataset.panel !== b.dataset.tab);
+  movePill(b);
+});
+const initPill = () => movePill(tabs.find(t => t.getAttribute("aria-selected") === "true"));
+addEventListener("resize", initPill); document.fonts?.ready.then(initPill); initPill();
+
+/* ---------- Simulador de desconto ---------- */
+const tierOf = v => v <= 20000 ? 0 : v <= 40000 ? 1 : v <= 60000 ? 2 : v <= 80000 ? 3 : v <= 100000 ? 4 : 5;
+const sel = $("#simUnit"), rng = $("#simEnt");
+const groups = [["Estúdios", avail(studios)], ["Apartamentos 2 quartos", avail(aptos)]];
+groups.forEach(([label, list]) => {
+  const og = document.createElement("optgroup"); og.label = label;
+  list.slice().sort((a, b) => a.p - b.p).forEach(x => {
+    const o = document.createElement("option"); o.value = x.u;
+    o.textContent = `${x.u} · ${x.m2.toFixed(2).replace(".", ",")} m² · ${brl(x.p)} · entrega ${"ABCD".includes(x.b) ? "2028" : "2029"}`;
+    og.append(o);
+  });
+  sel.append(og);
+});
+sel.value = avail(studios).slice().sort((a, b) => a.p - b.p)[0]?.u;
+const tween = (el, to, fmt) => {
+  const from = +el.dataset.v || 0; el.dataset.v = to;
+  if (reduce) { el.textContent = fmt(to); return; }
+  const t0 = performance.now();
+  const tick = t => { const p = Math.min(1, (t - t0) / 500); el.textContent = fmt(from + (to - from) * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+};
+const sim = () => {
+  const u = U.find(x => x.u === sel.value); if (!u) return;
+  const ent = Math.min(+rng.value, u.p);
+  const t = tierOf(ent), save = u.p * t / 100, fin = u.p - save;
+  rng.style.setProperty("--p", ((rng.value - rng.min) / (rng.max - rng.min) * 100) + "%");
+  $("#simEntOut").textContent = brl(+rng.value);
+  $$("#simTiers span").forEach((s, i) => s.classList.toggle("on", i === t));
+  $("#simPrice").textContent = brl(u.p);
+  $("#simEtapa").textContent = "ABCD".includes(u.b) ? "Mar/2028" : "Mar/2029";
+  $("#simPct").textContent = t + "%";
+  tween($("#simSave"), save, brl2);
+  tween($("#simFinal"), fin, brl);
+  tween($("#simRest"), Math.max(0, fin - ent), brl);
+};
+sel.onchange = sim; rng.oninput = sim; sim();
+
+/* ---------- Formulário em etapas ---------- */
+const form = $("#leadForm");
+let cur = 1;
+const show = n => {
+  cur = n;
+  $$(".fstep", form).forEach(s => s.classList.toggle("on", +s.dataset.step === n));
+  $$(".prog i", form).forEach((b, i) => b.classList.toggle("on", i < Math.min(n, 4)));
+  if (n === 5) $(".prog", form).style.display = "none";
+  const r = form.getBoundingClientRect();
+  if (r.top < 0) form.closest(".fcard").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+};
+const setErr = (k, msg) => { const e = $(`[data-err="${k}"]`, form); if (e) e.textContent = msg || ""; };
+const val = k => (new FormData(form).get(k) || "").toString().trim();
+const digits = s => s.replace(/\D/g, "");
+const validate = n => {
+  let ok = true;
+  if (n === 1) { const v = val("objetivo"); setErr("objetivo", v ? "" : "Escolha uma opção para continuar."); ok = !!v; }
+  if (n === 2) { const v = val("renda"); setErr("renda", v ? "" : "Escolha a faixa mais próxima. Não precisa ser exato."); ok = !!v; }
+  if (n === 3) {
+    const nome = val("nome"), wa = digits(val("whatsapp"));
+    const nOk = nome.length >= 2, wOk = wa.length === 10 || wa.length === 11;
+    setErr("nome", nOk ? "" : "Digite seu nome."); $("#fNome").classList.toggle("bad", !nOk);
+    setErr("whatsapp", wOk ? "" : "Digite o WhatsApp com DDD, ex.: (93) 98130-7082."); $("#fWa").classList.toggle("bad", !wOk);
+    const cOk = $("#fConsent").checked; setErr("consent", cOk ? "" : "Marque a autorização para eu poder te chamar.");
+    ok = nOk && wOk && cOk;
+  }
+  return ok;
+};
+$$(".js-next", form).forEach(b => b.onclick = () => { if (validate(cur)) show(cur + 1); });
+$$(".js-prev", form).forEach(b => b.onclick = () => show(cur - 1));
+// avança sozinho ao escolher o objetivo
+$$('input[name="objetivo"]', form).forEach(r => r.addEventListener("change", () => { setErr("objetivo", ""); setTimeout(() => cur === 1 && show(2), 280); }));
+$$('input[name="renda"]', form).forEach(r => r.addEventListener("change", () => setErr("renda", "")));
+// botões "Quero morar / Quero investir" já marcam a opção
+$$(".js-pick").forEach(a => a.addEventListener("click", () => { const r = $(`input[name="objetivo"][value="${a.dataset.goal}"]`); if (r) { r.checked = true; show(2); } }));
+// máscara do WhatsApp
+$("#fWa").addEventListener("input", e => {
+  let d = digits(e.target.value).slice(0, 11);
+  if (d.length > 6) e.target.value = `(${d.slice(0, 2)}) ${d.length === 11 ? d.slice(2, 7) + "-" + d.slice(7) : d.slice(2, 6) + "-" + d.slice(6)}`;
+  else if (d.length > 2) e.target.value = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  else e.target.value = d;
+});
+// máscaras de CPF e data de nascimento
+$("#fCpf").addEventListener("input", e => {
+  const d = digits(e.target.value).slice(0, 11);
+  e.target.value = d.replace(/^(\d{3})(\d)/, "$1.$2").replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3").replace(/\.(\d{3})(\d{1,2})$/, ".$1-$2");
+});
+$("#fNasc").addEventListener("input", e => {
+  const d = digits(e.target.value).slice(0, 8);
+  e.target.value = d.length > 4 ? `${d.slice(0, 2)}/${d.slice(2, 4)}/${d.slice(4)}` : d.length > 2 ? `${d.slice(0, 2)}/${d.slice(2)}` : d;
+});
+const cpfValido = c => {
+  c = digits(c);
+  if (c.length !== 11 || /^(\d)\1{10}$/.test(c)) return false;
+  for (const t of [9, 10]) {
+    let s = 0;
+    for (let i = 0; i < t; i++) s += +c[i] * (t + 1 - i);
+    if (((s * 10) % 11) % 10 !== +c[t]) return false;
+  }
+  return true;
+};
+const idadeDe = txt => {
+  const m = /^(\d{2})\/(\d{2})\/(\d{4})$/.exec(txt); if (!m) return -1;
+  const [d, mo, y] = [+m[1], +m[2], +m[3]], dt = new Date(y, mo - 1, d);
+  if (dt.getFullYear() !== y || dt.getMonth() !== mo - 1 || dt.getDate() !== d) return -1;
+  const hoje = new Date(); let idade = hoje.getFullYear() - y;
+  if (hoje < new Date(hoje.getFullYear(), mo - 1, d)) idade--;
+  return idade;
+};
+
+// origem do anúncio (UTM)
+const qs = new URLSearchParams(location.search);
+const enviar = async data => {
+  try {
+    if (CONFIG.SHEETS_URL) await fetch(CONFIG.SHEETS_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(data) });
+    else console.warn("SHEETS_URL não configurado: dados não salvos na planilha.", data);
+  } catch (err) { console.error(err); }
+};
+let lead = null;
+const finalizar = comCaixa => {
+  $("#doneName").textContent = lead.nome.split(" ")[0];
+  $("#doneTxt").textContent = comCaixa
+    ? "Recebi seus dados e já vou preparar a sua simulação na Caixa. Quer adiantar? Me chame agora no WhatsApp."
+    : "Recebi seu contato e já vou preparar a sua simulação. Quer adiantar? Me chame agora no WhatsApp.";
+  $("#doneWa").href = waLink(`Olá, Anderson! Sou ${lead.nome}. Acabei de pedir minha simulação do Morar Bem 1.\nObjetivo: ${lead.objetivo}\nRenda familiar: ${lead.renda}\nEntrada: ${lead.entrada}` + (comCaixa ? "\nJá enviei CPF e data de nascimento pelo formulário." : ""));
+  show(5);
+};
+
+// passo 3: salva o contato na planilha
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  if (cur !== 3 || !validate(3)) return;
+  if (val("website")) return; // robô
+  const btn = $("#fSend"); btn.disabled = true; btn.textContent = "Enviando…";
+  lead = {
+    id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7),
+    nome: val("nome"), whatsapp: $("#fWa").value, renda: val("renda"), objetivo: val("objetivo"),
+    entrada: val("entrada") || "Não informado",
+    utm_source: qs.get("utm_source") || "", utm_medium: qs.get("utm_medium") || "", utm_campaign: qs.get("utm_campaign") || "",
+    pagina: location.href.split("?")[0]
+  };
+  await enviar(lead);
+  if (window.fbq) fbq("track", "Lead");
+  if (window.gtag) gtag("event", "generate_lead");
+  show(4);
+  setTimeout(() => $("#fCpf").focus({ preventScroll: true }), 400);
+});
+
+// passo 4: CPF e data de nascimento para a simulação na Caixa
+$("#fSend2").addEventListener("click", async () => {
+  const cpf = $("#fCpf").value, nasc = $("#fNasc").value, idade = idadeDe(nasc);
+  const cOk = cpfValido(cpf), nOk = idade >= 18 && idade <= 100, aOk = $("#fConsent2").checked;
+  setErr("cpf", cOk ? "" : "Confira o CPF: ele precisa ter 11 números válidos."); $("#fCpf").classList.toggle("bad", !cOk);
+  setErr("nascimento", nOk ? "" : idade >= 0 && idade < 18 ? "Para financiar, o comprador precisa ter 18 anos ou mais." : "Confira a data de nascimento (dia/mês/ano).");
+  $("#fNasc").classList.toggle("bad", !nOk);
+  setErr("consent2", aOk ? "" : "Marque a autorização para usarmos esses dados na simulação.");
+  if (!(cOk && nOk && aOk)) return;
+  const btn = $("#fSend2"); btn.disabled = true; btn.textContent = "Enviando…";
+  await enviar({ acao: "complemento", id: lead.id, cpf, nascimento: nasc });
+  if (window.fbq) fbq("track", "CompleteRegistration");
+  finalizar(true);
+});
+$(".js-skip").addEventListener("click", () => finalizar(false));
+</script>
+</body>
+</html>
