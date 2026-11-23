@@ -939,6 +939,8 @@ groups.forEach(([label, list]) => {
   sel.append(og);
 });
 sel.value = avail(studios).slice().sort((a, b) => a.p - b.p)[0]?.u;
+const uParam = (new URLSearchParams(location.search).get("unidade") || "").toUpperCase();
+if (uParam && [...sel.options].some(o => o.value === uParam)) sel.value = uParam;
 const tween = (el, to, fmt) => {
   const from = +el.dataset.v || 0; el.dataset.v = to;
   if (reduce) { el.textContent = fmt(to); return; }
